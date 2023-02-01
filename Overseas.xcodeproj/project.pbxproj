@@ -11,6 +11,9 @@
 		31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420EBC298A6D6400EFD4C2 /* ContentView.swift */; };
 		31420EBF298A6D6400EFD4C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31420EBE298A6D6400EFD4C2 /* Assets.xcassets */; };
 		31420EC3298A6D6400EFD4C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31420EC2298A6D6400EFD4C2 /* Preview Assets.xcassets */; };
+		31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420EC9298A6E1400EFD4C2 /* Onbording.swift */; };
+		31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECB298A6E2600EFD4C2 /* MainPage.swift */; };
+		31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECD298A6E3800EFD4C2 /* addCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		31420EBE298A6D6400EFD4C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31420EC0298A6D6400EFD4C2 /* Overseas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Overseas.entitlements; sourceTree = "<group>"; };
 		31420EC2298A6D6400EFD4C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		31420EC9298A6E1400EFD4C2 /* Onbording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onbording.swift; sourceTree = "<group>"; };
+		31420ECB298A6E2600EFD4C2 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		31420ECD298A6E3800EFD4C2 /* addCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				31420EBA298A6D6400EFD4C2 /* OverseasApp.swift */,
 				31420EBC298A6D6400EFD4C2 /* ContentView.swift */,
+				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
+				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
+				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
 				31420EBE298A6D6400EFD4C2 /* Assets.xcassets */,
 				31420EC0298A6D6400EFD4C2 /* Overseas.entitlements */,
 				31420EC1298A6D6400EFD4C2 /* Preview Content */,
@@ -139,8 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
 				31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */,
 				31420EBB298A6D6400EFD4C2 /* OverseasApp.swift in Sources */,
+				31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */,
+				31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +291,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -287,7 +299,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Hopes.Overseas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,7 +331,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -325,7 +339,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Hopes.Overseas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

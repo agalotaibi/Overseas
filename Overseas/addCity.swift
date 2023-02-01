@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct addCity: View {
+    @State private var searchTerm = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            NavigationView {
+                
+                VStack {
+                    Text ("Find a developer").font(.title.weight (.bold))
+                    Text ("Start searching for a developer to make your app.").navigationTitle ("Search")
+                    
+                    
+                }
+                
+                
+            }.searchable(text: $searchTerm)
+        }
     }
 }
+    
+    struct addCity_Previews: PreviewProvider {
+        static var previews: some View {
+            addCity()
+        }
+    }
 
-struct addCity_Previews: PreviewProvider {
-    static var previews: some View {
-        addCity()
-    }
-}

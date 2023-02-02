@@ -10,15 +10,38 @@ import SwiftUI
 struct addCity: View {
     let names = ["Holly", "Josh", "Rhonda", "Ted"]
     @State private var searchText = ""
+    @State private var showingNatio = false
+    @State private var showingNotifi = false
     
     var body: some View {
         
        
-        
         VStack {
-            Image(systemName: "ellipsis.circle").resizable()
-                .scaledToFit()
-                .frame(width: 24).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
+            Menu {
+                Section {
+                    Button(action: {}) {
+                        Label("Edit List", systemImage: "pencil")
+                    }
+                    
+                    Button(action: {
+                        showingNatio.toggle()
+                    }) {
+                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
+                    }
+                    
+                    Button(action: {
+                        showingNotifi.toggle()
+                    }) {
+                        Label("Notification", systemImage: "bell.badge")
+                    }
+                }
+                
+            }label: {
+                Image(systemName: "ellipsis.circle").resizable()
+                    .scaledToFit()
+                    .frame(width: 22).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
+            }
+       
            
             NavigationStack {
                 
@@ -38,6 +61,10 @@ struct addCity: View {
                     Text("Are you looking for \(result)?").searchCompletion(result)
                 }
         }
+        } .sheet(isPresented: $showingNatio) {
+            Nationality()
+        }.sheet(isPresented: $showingNotifi) {
+            Notification()
         }
     }
     

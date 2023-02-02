@@ -14,6 +14,8 @@
 		31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420EC9298A6E1400EFD4C2 /* Onbording.swift */; };
 		31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECB298A6E2600EFD4C2 /* MainPage.swift */; };
 		31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECD298A6E3800EFD4C2 /* addCity.swift */; };
+		31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E0298BEBF900130841 /* Nationality.swift */; };
+		31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E2298BEC0B00130841 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		31420EC9298A6E1400EFD4C2 /* Onbording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onbording.swift; sourceTree = "<group>"; };
 		31420ECB298A6E2600EFD4C2 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		31420ECD298A6E3800EFD4C2 /* addCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCity.swift; sourceTree = "<group>"; };
+		31D4A8E0298BEBF900130841 /* Nationality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nationality.swift; sourceTree = "<group>"; };
+		31D4A8E2298BEC0B00130841 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
 				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
+				31D4A8E0298BEBF900130841 /* Nationality.swift */,
+				31D4A8E2298BEC0B00130841 /* Notification.swift */,
 				31420EBE298A6D6400EFD4C2 /* Assets.xcassets */,
 				31420EC0298A6D6400EFD4C2 /* Overseas.entitlements */,
 				31420EC1298A6D6400EFD4C2 /* Preview Content */,
@@ -151,7 +157,9 @@
 				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
 				31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */,
 				31420EBB298A6D6400EFD4C2 /* OverseasApp.swift in Sources */,
+				31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */,
 				31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */,
+				31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */,
 				31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

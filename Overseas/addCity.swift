@@ -18,7 +18,7 @@ struct addCity: View {
         VStack {
             Image(systemName: "ellipsis.circle").resizable()
                 .scaledToFit()
-                .frame(width: 22).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
+                .frame(width: 24).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
            
             NavigationStack {
                 

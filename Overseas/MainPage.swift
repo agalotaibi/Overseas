@@ -24,8 +24,8 @@ struct MainPage: View {
                 }
                 .foregroundColor(Color.white)
                 .bold()
-                .padding(.top, -325.0)
-                .font(.largeTitle)
+                .padding(.top, -310.0)
+                .font(.custom("", fixedSize: 50))
                 .listRowBackground(Color.white)
                 //--------------------------------------- List start
                 VStack{
@@ -179,7 +179,7 @@ struct MainPage: View {
                         //--------------------------------------- Second list style
                     }
                     .scrollContentBackground(.hidden)
-                    .padding(.top, 430.0)
+                    .padding(.top, 410.0)
                     .opacity(0.7)
                     .foregroundColor(Color.black)
                     .font(.system(size: 19))
@@ -188,9 +188,8 @@ struct MainPage: View {
                 VStack{
                     NavigationLink(destination: addCity(),
                                    label: {
-                        Image(systemName: "plus")
-                            .background(Color.gray)
-                            .foregroundColor(Color.black)
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(Color.white)
                     })
                     .buttonStyle(GrowingButton())
                 }
@@ -201,11 +200,11 @@ struct MainPage: View {
 struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 40))
-            .background(Color.gray)
+            .font(.system(size: 29))
+            //.background(Color.gray)
             .clipShape(Circle())
             .padding(.leading, 290.0)
-            .padding(.top, 720)
+            .padding(.bottom, 700)
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.5), value: configuration.isPressed)
     }

@@ -14,18 +14,23 @@ struct Nationality: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Image(systemName: "globe.asia.australia.fill").resizable().aspectRatio(contentMode: .fit)
-                .frame(width: 250).padding().padding(.top).foregroundColor(Color("darkBlue"))
+                .frame(width: 200).padding().padding().foregroundColor(Color("darkBlue"))
             
-            Text("Pick your Nationality")
-                .font(.system(size: 38)).frame(maxWidth: 300, alignment: .leading).padding(.top)
+            Text("Pick your")
+                .font(.system(size: 38)).frame(maxWidth: 300, alignment: .leading)
+            Text("Nationality")
+                .font(.system(size: 38)).fontWeight(.semibold).frame(maxWidth: 300, alignment: .leading)
             
             Divider().frame(width: 340)
-            Picker("Pick your Nationality", selection: $selectedItem) { // 3
-                        ForEach(options, id: \.self) { item in // 4
-                            Text(item) // 5
-                        }
-            }.pickerStyle(.wheel)
+//            Picker("Pick your Nationality", selection: $selectedItem) { // 3
+//                        ForEach(options, id: \.self) { item in // 4
+//                            Text(item) // 5
+//                        }
+//            }.pickerStyle(.wheel)
+            
+            PickerView()
             
             Spacer()
         }

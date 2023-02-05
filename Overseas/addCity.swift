@@ -41,20 +41,40 @@ struct addCity: View {
                     .scaledToFit()
                     .frame(width: 22).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
             }
+            
+            Text("Countries").font(.system(size: 30)).frame(maxWidth: 360, alignment: .leading)
        
            
             NavigationStack {
                 
-                List {
-                    ForEach(searchResults, id: \.self) { name in
-                        NavigationLink {
-                            Text(name)
-                        } label: {
-                            Text(name)
+//                List {
+//                    ForEach(searchResults, id: \.self) { name in
+//
+//                            Text(name)
+//
+//                    }
+//                }
+//                .scrollContentBackground(.hidden)
+                
+                ZStack(alignment: .leading) {
+                            Image("france")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 360, height: 100)
+                                .cornerRadius(7)
+                                .overlay(
+                                    Rectangle()
+                                        .foregroundColor(.black)
+                                        .cornerRadius(7)
+                                        .opacity(0.4)
+                                )
+
+                            Text("France")
+                                .font(.system(.largeTitle, design: .rounded))
+                                .fontWeight(.black)
+                                .foregroundColor(.white)
+                                .padding()
                         }
-                    }
-                }
-                .navigationTitle("Countries").scrollContentBackground(.hidden)
             }
             .searchable(text: $searchText) {
                 ForEach(searchResults, id: \.self) { result in

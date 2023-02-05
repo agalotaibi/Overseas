@@ -8,25 +8,75 @@
 import SwiftUI
 
 struct addCity: View {
-    @State private var searchTerm = ""
+    let names = ["Holly", "Josh", "Rhonda", "Ted"]
+    @State private var searchText = ""
+    @State private var showingNatio = false
+    @State private var showingNotifi = false
     
     var body: some View {
-        VStack{
-            NavigationView {
-                
-                VStack {
-                    Text ("Find a developer").font(.title.weight (.bold))
-                    Text ("Start searching for a developer to make your app.").navigationTitle ("Search")
+        
+       
+        VStack {
+            Menu {
+                Section {
+                    Button(action: {}) {
+                        Label("Edit List", systemImage: "pencil")
+                    }
                     
+                    Button(action: {
+                        showingNatio.toggle()
+                    }) {
+                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
+                    }
                     
+                    Button(action: {
+                        showingNotifi.toggle()
+                    }) {
+                        Label("Notification", systemImage: "bell.badge")
+                    }
                 }
                 
+            }label: {
+                Image(systemName: "ellipsis.circle").resizable()
+                    .scaledToFit()
+                    .frame(width: 22).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
+            }
+       
+           
+            NavigationStack {
                 
-            }.searchable(text: $searchTerm)
+                List {
+                    ForEach(searchResults, id: \.self) { name in
+                        NavigationLink {
+                            Text(name)
+                        } label: {
+                            Text(name)
+                        }
+                    }
+                }
+                .navigationTitle("Countries").scrollContentBackground(.hidden)
+            }
+            .searchable(text: $searchText) {
+                ForEach(searchResults, id: \.self) { result in
+                    Text("Are you looking for \(result)?").searchCompletion(result)
+                }
+        }
+        } .sheet(isPresented: $showingNatio) {
+            Nationality()
+        }.sheet(isPresented: $showingNotifi) {
+            Notification()
+        }
+    }
+    
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return names
+        } else {
+            return names.filter { $0.contains(searchText) }
         }
     }
 }
-    
+
     struct addCity_Previews: PreviewProvider {
         static var previews: some View {
             addCity()

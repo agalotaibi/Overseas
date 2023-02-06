@@ -16,72 +16,86 @@ struct addCity: View {
     var body: some View {
         
        
-        VStack {
-            Menu {
-                Section {
-                    Button(action: {}) {
-                        Label("Edit List", systemImage: "pencil")
-                    }
-                    
-                    Button(action: {
-                        showingNatio.toggle()
-                    }) {
-                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
-                    }
-                    
-                    Button(action: {
-                        showingNotifi.toggle()
-                    }) {
-                        Label("Notification", systemImage: "bell.badge")
-                    }
-                }
-                
-            }label: {
-                Image(systemName: "ellipsis.circle").resizable()
-                    .scaledToFit()
-                    .frame(width: 22).frame(maxWidth: 330,  alignment: .trailing).padding(.top)
-            }
+        ZStack() {
             
-            Text("Countries").font(.system(size: 30)).frame(maxWidth: 360, alignment: .leading)
-       
-           
-            NavigationStack {
-                
-//                List {
-//                    ForEach(searchResults, id: \.self) { name in
-//
-//                            Text(name)
-//
-//                    }
-//                }
-//                .scrollContentBackground(.hidden)
-                
-                ZStack(alignment: .leading) {
-                            Image("france")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 360, height: 100)
-                                .cornerRadius(7)
-                                .overlay(
-                                    Rectangle()
-                                        .foregroundColor(.black)
-                                        .cornerRadius(7)
-                                        .opacity(0.4)
-                                )
-
-                            Text("France")
-                                .font(.system(.largeTitle, design: .rounded))
-                                .fontWeight(.black)
-                                .foregroundColor(.white)
-                                .padding()
+                Menu {
+                    Section {
+                        Button(action: {}) {
+                            Label("Edit List", systemImage: "pencil")
                         }
-            }
-            .searchable(text: $searchText) {
-                ForEach(searchResults, id: \.self) { result in
-                    Text("Are you looking for \(result)?").searchCompletion(result)
+                        
+                        Button(action: {
+                            showingNatio.toggle()
+                        }) {
+                            Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
+                        }
+                        
+                        Button(action: {
+                            showingNotifi.toggle()
+                        }) {
+                            Label("Notification", systemImage: "bell.badge")
+                        }
+                    }
+                    
+                }label: {
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .scaledToFit()
+                      
+                        .frame(width: 22)
+                        .frame(maxWidth: 330,  alignment: .trailing)
+                        .foregroundColor(.red)
+                        .padding(.top)
                 }
-        }
-        } .sheet(isPresented: $showingNatio) {
+                
+                
+                
+                NavigationStack {
+                    
+                    //                List {
+                    //                    ForEach(searchResults, id: \.self) { name in
+                    //
+                    //                            Text(name)
+                    //
+                    //                    }
+                    //                }
+                    //                .scrollContentBackground(.hidden)
+                    
+                    ZStack(alignment: .leading) {
+                        Image("france")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 360, height: 100)
+                            .cornerRadius(7)
+                            .overlay(
+                                Rectangle()
+                                    .foregroundColor(.black)
+                                    .cornerRadius(7)
+                                    .opacity(0.4)
+                            )
+                        
+                        Text("France")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.black)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    
+                    .navigationTitle("Countries")
+                    .font(.system(size: 30))
+                    //                .frame(maxWidth: 360, alignment: .leading)
+                    
+                }
+            
+                .searchable(text: $searchText) {
+                    ForEach(searchResults, id: \.self) { result in
+                        Text("Are you looking for \(result)?").searchCompletion(result)
+                    }
+                }
+            
+        }//vstack
+        
+        .sheet(isPresented: $showingNatio) {
             Nationality()
         }.sheet(isPresented: $showingNotifi) {
             Notification()

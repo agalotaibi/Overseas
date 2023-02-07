@@ -16,38 +16,8 @@ struct addCity: View {
     var body: some View {
         
        
-        ZStack() {
-            
-                Menu {
-                    Section {
-                        Button(action: {}) {
-                            Label("Edit List", systemImage: "pencil")
-                        }
-                        
-                        Button(action: {
-                            showingNatio.toggle()
-                        }) {
-                            Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
-                        }
-                        
-                        Button(action: {
-                            showingNotifi.toggle()
-                        }) {
-                            Label("Notification", systemImage: "bell.badge")
-                        }
-                    }
-                    
-                }label: {
-                    Image(systemName: "ellipsis.circle")
-                        .resizable()
-                        .scaledToFit()
-                      
-                        .frame(width: 22)
-                        .frame(maxWidth: 330,  alignment: .trailing)
-                        .foregroundColor(.red)
-                        .padding(.top)
-                }
-                
+       VStack() {
+          
                 
                 
                 NavigationStack {
@@ -84,7 +54,40 @@ struct addCity: View {
                     .navigationTitle("Countries")
                     .font(.system(size: 30))
                     //                .frame(maxWidth: 360, alignment: .leading)
-                    
+                    .toolbar{
+                        ToolbarItemGroup(placement: .navigationBarTrailing){
+                            
+                            Menu {
+                                Section {
+                                    Button(action: {}) {
+                                        Label("Edit List", systemImage: "pencil")
+                                    }
+                                    
+                                    Button(action: {
+                                        showingNatio.toggle()
+                                    }) {
+                                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
+                                    }
+                                    
+                                    Button(action: {
+                                        showingNotifi.toggle()
+                                    }) {
+                                        Label("Notification", systemImage: "bell.badge")
+                                    }
+                                }
+                                
+                            }label: {
+                                Image(systemName: "ellipsis.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                    .frame(width: 22)
+                                    .frame(maxWidth: 330,  alignment: .trailing)
+                                    .padding(.top)
+                            }
+                            
+                        }
+                    }
                 }
             
                 .searchable(text: $searchText) {

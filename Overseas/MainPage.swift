@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainPage: View {
+    
+    @AppStorage("key1")  var shouldshowonb = true
+    
     let numberString = "111-222-3334" //change
     var body: some View {
         NavigationView {

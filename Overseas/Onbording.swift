@@ -125,7 +125,7 @@ struct Onbording: View {
                             
                            Text("Allow location")
                                 
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color("darkBlue"))
                                 .frame(width: 200, height: 50.0)
                                 .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color("Yellow")/*@END_MENU_TOKEN@*/)
                                 .cornerRadius(12)

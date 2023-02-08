@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainPage: View {
     
-    @AppStorage("key1")  var shouldshowonb = true
+    @AppStorage("onbording")  var shouldshowonb = true
     
     let numberString = "111-222-3334" //change
     var body: some View {
@@ -198,8 +198,14 @@ struct MainPage: View {
                 }
             } .preferredColorScheme(.light)
         }
+        .fullScreenCover(isPresented: $shouldshowonb ){
+        Onbording(shouldshowonb: $shouldshowonb)
+         }
+        
     }
 }
+
+
 struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

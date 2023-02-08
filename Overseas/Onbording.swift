@@ -120,7 +120,7 @@ struct Onbording: View {
                     VStack{
                         
                         Button(action: {
-                            shouldshowonb.toggle()
+                            
                         },label:{
                             
                            Text("Allow location")
@@ -134,6 +134,7 @@ struct Onbording: View {
                         .padding()
                     
                     Button(action: {
+                        MainPage()
                         shouldshowonb.toggle()
                     },label:{
                         

@@ -134,7 +134,7 @@ struct Onbording: View {
                         .padding()
                     
                     Button(action: {
-                        MainPage()
+                    
                         shouldshowonb.toggle()
                     },label:{
                         

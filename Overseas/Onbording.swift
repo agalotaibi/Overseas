@@ -155,7 +155,7 @@ struct Onbording: View {
                 
                 
             }//tab
-            .frame(width: .infinity, height: .infinity)
+          //  .frame(width: .infinity, height: .infinity)
             .tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always))
             
         }

@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import CoreLocationUI
+import CoreLocation
 
 struct MainPage: View {
+    @StateObject var locationManager = LocationManager()
+//    let location = CLLocation(latitude:locationManager.location!.latitude, longitude: locationManager.location!.longitude)
+    
     let numberString = "111-222-3334" //change
+//    var name = ""
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,15 +24,15 @@ struct MainPage: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.all)
                 //--------------------------------------- Title
-                VStack {
+                VStack{
                     Text("France")
-                    Divider()
                 }
                 .foregroundColor(Color.white)
                 .bold()
                 .padding(.top, -310.0)
                 .font(.custom("", fixedSize: 50))
                 .listRowBackground(Color.white)
+                
                 //--------------------------------------- List start
                 VStack{
                     List{
@@ -194,6 +200,7 @@ struct MainPage: View {
                     .buttonStyle(GrowingButton())
                 }
             } .preferredColorScheme(.light)
+            //-------------------------------
         }
     }
 }
@@ -214,7 +221,6 @@ struct CustomColor {
     // static let Text = Color("Text")
     // Add more here...
 }
-
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
         MainPage()

@@ -58,7 +58,7 @@ struct ContentView: View {
                     Text("Your Nationality")
                         .font(.system(size: 46))
                         .fontWeight(.bold).frame(maxWidth: 300, alignment: .leading).padding(.bottom)
-                    
+                    //------------------------------
                     LocationButton(.shareCurrentLocation){
                         locationManager.requestLocation()
                         if let location = locationManager.location {
@@ -75,8 +75,7 @@ struct ContentView: View {
                         } else {
                             print("INVALED!!!!!!!")
                         }
-                        //------------------------------
-                    }
+                    }//------------------------------
                     .cornerRadius(30)
                     .symbolVariant(.fill)
                     .foregroundColor(.white)

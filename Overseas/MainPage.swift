@@ -11,10 +11,8 @@ import CoreLocation
 
 struct MainPage: View {
     @StateObject var locationManager = LocationManager()
-//    let location = CLLocation(latitude:locationManager.location!.latitude, longitude: locationManager.location!.longitude)
-    
     let numberString = "111-222-3334" //change
-//    var name = ""
+
     var body: some View {
         NavigationView {
             ZStack {

@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct addCity: View {
+    
     let names = ["Holly", "Josh", "Rhonda", "Ted"]
     @State private var searchText = ""
     @State private var showingNatio = false
     @State private var showingNotifi = false
     
+  
     var body: some View {
         
-       
        VStack() {
-          
-                
                 
                 NavigationStack {
                     
@@ -31,29 +30,17 @@ struct addCity: View {
                     //                }
                     //                .scrollContentBackground(.hidden)
                     
-                    ZStack(alignment: .leading) {
-                        Image("france")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 360, height: 100)
-                            .cornerRadius(7)
-                            .overlay(
-                                Rectangle()
-                                    .foregroundColor(.black)
-                                    .cornerRadius(7)
-                                    .opacity(0.4)
-                            )
-                        
-                        Text("France")
-                            .font(.system(.largeTitle, design: .rounded))
-                            .fontWeight(.black)
-                            .foregroundColor(.white)
-                            .padding()
+//
+                    
+                    VStack{
+                        city(cityPic: "france" , cityName: "France")
                     }
                     
+                    Spacer()
                     .navigationTitle("Countries")
                     .font(.system(size: 30))
-                    //                .frame(maxWidth: 360, alignment: .leading)
+                    
+                    
                     .toolbar{
                         ToolbarItemGroup(placement: .navigationBarTrailing){
                             
@@ -86,9 +73,9 @@ struct addCity: View {
                                     .padding(.top)
                             }
                             
-                        }
-                    }
-                }
+                        }//ToolbarItemGroup
+                    }//toolbar
+                }// NavigationStack
             
                 .searchable(text: $searchText) {
                     ForEach(searchResults, id: \.self) { result in
@@ -114,9 +101,46 @@ struct addCity: View {
     }
 }
 
+
+
+
     struct addCity_Previews: PreviewProvider {
         static var previews: some View {
             addCity()
+        }
+    }
+
+
+struct city: View {
+
+    @State var cityPic = "france"
+    @State var cityName = "France"
+
+    var body: some View {
+
+        ZStack (alignment: .leading){
+
+                Image(cityPic)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 360, height: 100)
+                .cornerRadius(7)
+                .overlay( Rectangle()
+                    .foregroundColor(.black)
+                    .cornerRadius(7)
+                    .opacity(0.4))
+
+
+                    Text(cityName)
+                .foregroundColor(.white)
+                .bold()
+                .font(.system(.largeTitle, design: .rounded))
+                .fontWeight(.black)
+                .foregroundColor(.white)
+                .padding()
+
+
+            }.padding(.horizontal,40)
         }
     }
 

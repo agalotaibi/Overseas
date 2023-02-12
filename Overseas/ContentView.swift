@@ -70,7 +70,7 @@ struct ContentView: View {
                                 guard let city = city, let country = country, error == nil else { return }
                                 Cityname = city
                                 Countryname = country
-                                //print(city + ", " + country)
+                                print(city + ", " + country)
                             }
                         } else {
                             print("INVALED!!!!!!!")

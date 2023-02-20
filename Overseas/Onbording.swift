@@ -6,12 +6,29 @@
 //
 
 import SwiftUI
+import CloudKit
+import CoreData
+import CoreLocationUI
+import CoreLocation
+
+extension CLLocation {
+    func fetchCityAndCountry(completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1) }
+    }
+}
 
 struct Onbording: View {
-    @State private var selectedTab = 1
+    @EnvironmentObject var vm : ViewModel
     
-    var nationality = ["Saudi Arabia", "USA", "UK", "Bahrin"]
-    @State private var selectedNationality = "UK"
+    @State private var selectedTab = 1
+    @StateObject var locationManager = LocationManager()
+    @State private var Cityname = ""
+    @State private var Countryname = ""
+    var nationality = ["","Saudi Arabia","Kawait"]
+    @State private var selectedNationality = ""
+    
+   
+  
 
     @Binding var shouldshowonb : Bool
     
@@ -78,10 +95,16 @@ struct Onbording: View {
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
                     
-                    
-                    PickerView()
-                    
-                    //.onAppear()
+                    VStack {
+                        Text("You selected: \(vm.nationality)")
+                        Picker("Please choose a color", selection: $vm.nationality) {
+                            ForEach(nationality, id: \.self) {
+                                Text($0)
+                            }
+                        }.pickerStyle(WheelPickerStyle())
+                        
+                    }
+                  
                     Spacer()
                     
                 }.tag(2)
@@ -118,24 +141,35 @@ struct Onbording: View {
                         
                     
                     VStack{
-                        
-                        Button(action: {
-                            
-                        },label:{
-                            
-                           Text("Allow location")
-                                
-                                .foregroundColor(Color("darkBlue"))
-                                .frame(width: 200, height: 50.0)
-                                .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color("Yellow")/*@END_MENU_TOKEN@*/)
-                                .cornerRadius(12)
-                        })
-                        
-                        .padding()
+                                            //------------------------------
+                                            LocationButton(.shareCurrentLocation){
+                                                locationManager.requestLocation()
+                                                if let location = locationManager.location {
+                                                    print("longitude: ",location.longitude)
+                                                    print("latitude: ",location.latitude)
+                                                    //------------------------------
+                                                    let location = CLLocation(latitude:location.latitude, longitude: location.longitude)
+                                                    location.fetchCityAndCountry { city, country, error in
+                                                        guard let city = city, let country = country, error == nil else { return }
+                                                        Cityname = city
+                                                        Countryname = country
+                                                     print(Cityname)
+                                                    }
+                                                } else {
+                                                    print("INVALED!!!!!!!")
+                                                }
+                                            }//------------------------------
+                                            .cornerRadius(30)
+                                            .tint(Color("Yellow"))
+                                            .foregroundColor(Color("darkBlue"))
+                                            .padding()
                     
                     Button(action: {
+                        
+                    shouldshowonb.toggle()
                     
-                        shouldshowonb.toggle()
+                    
+                       
                     },label:{
                         
                         Image(systemName: "arrow.forward.circle")
@@ -154,9 +188,11 @@ struct Onbording: View {
                 
                 
                 
-            }//tab
-          //  .frame(width: .infinity, height: .infinity)
+            }
             .tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always))
+            .onAppear{
+                print(vm.nationality,"😀")
+            }
             
         }
     }
@@ -164,31 +200,17 @@ struct Onbording: View {
     
 }
 
-
-
-struct PickerView: View {
-    var nationality = ["Saudi Arabia", "USA", "UK", "Bahrin"]
-    @State private var selectedNationality = ""
-
-    var body: some View {
-        VStack {
-            Text("You selected: \(selectedNationality)")
-            Picker("Please choose a color", selection: $selectedNationality) {
-                ForEach(nationality, id: \.self) {
-                    Text($0)
-                }
-            }.pickerStyle(WheelPickerStyle())
-            
-        }
+func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
+    CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+        completion(placemarks?.first?.locality,
+                   placemarks?.first?.country,
+                   error)
     }
 }
-
-
-
 
 struct Onbording_Previews: PreviewProvider {
     static var previews: some View {
-        Onbording(shouldshowonb: .constant(true))
+        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel())        // , shouldshowonb: .constant(true)
     }
 }
 

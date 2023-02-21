@@ -34,214 +34,178 @@ struct MainPage: View {
     
     var body: some View {
         
-        
+        VStack{
         
         NavigationView {
             TabView{
-                ZStack {
-                    ForEach(emer) { emere  in
-                        
-                        //                    emere.bannerImage.resizable().edgesIgnoringSafeArea(.all)
-                        
-                    }
-                    //--------------------------------------- Title
-                    VStack {
-                        
-                        let loca = country()
-                        
-                        Text("\(loca)")
-                        Divider()
-                    }
-                    .foregroundColor(Color.white)
-                    .bold()
-                    .padding(.top, -310.0)
-                    .font(.custom("", fixedSize: 50))
-                    .listRowBackground(Color.white)
-                    //--------------------------------------- List start
-                    VStack{
+                
+                    ZStack {
                         ForEach(emer) { emere  in
                             
+                            emere.bannerImage.resizable().edgesIgnoringSafeArea(.all)
                             
-                            if emere.Police == emere.Ambulance {
+                        }
+                        //--------------------------------------- Title
+                        VStack {
+                            
+                            let loca = country()
+                            
+                            Text("\(loca)")
+                            Divider()
+                        }
+                        .foregroundColor(Color.white)
+                        .bold()
+                        .padding(.top, -310.0)
+                        .font(.custom("", fixedSize: 50))
+                        .listRowBackground(Color.white)
+                        //--------------------------------------- List start
+                        VStack{
+                            ForEach(emer) { emere  in
                                 
-                                List{
-                                    HStack{
-                                        Image("police")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Emergency number")
-                                            Text("\(emere.Police)")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.leading, -80)
-                                        }.padding(.trailing,70)
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(emere.Police)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                // .padding(.leading, 35)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }}.scrollContentBackground(.hidden)
+                                
+                                if emere.Police == emere.Ambulance {
+                                    
+                                    List{
+                                        HStack{
+                                            Image("police")
+                                                .font(.system(size: 29))
+                                            VStack {
+                                                Text("Emergency number")
+                                                Text("\(emere.Police)")
+                                                    .foregroundColor(Color.gray)
+                                                    .font(.footnote)
+                                                    .padding(.leading, -80)
+                                            }.padding(.trailing,70)
+                                            Button(
+                                                action: {
+                                                    let telephone = "tel://"
+                                                    let formattedString = telephone + String(emere.Police)
+                                                    guard let url = URL(string: formattedString) else { return }
+                                                    UIApplication.shared.open(url)
+                                                },
+                                                label: {
+                                                    Image(systemName: "phone.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 40.0)
+                                                    // .padding(.leading, 35)
+                                                        .foregroundColor(Color.green)
+                                                })
+                                        }}.scrollContentBackground(.hidden)
+                                        .padding(.top, 150.0)
+                                        .opacity(0.7)
+                                        .foregroundColor(Color.black)
+                                        .font(.system(size: 21))
+                                    
+                                    
+                                } else {
+                                    
+                                    List{
+                                        
+                                        
+                                        //---------------------------------------------------- police
+                                        HStack{
+                                            Image("police")
+                                                .font(.system(size: 29))
+                                            VStack {
+                                                Text("Police")
+                                                Text("\(emere.Police)")
+                                                    .foregroundColor(Color.gray)
+                                                    .font(.footnote)
+                                                    .padding(.leading, -30)
+                                            }
+                                            Button(
+                                                action: {
+                                                    let telephone = "tel://"
+                                                    let formattedString = telephone + String(emere.Police)
+                                                    guard let url = URL(string: formattedString) else { return }
+                                                    UIApplication.shared.open(url)
+                                                },
+                                                label: {
+                                                    Image(systemName: "phone.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 40.0)
+                                                        .padding(.leading, 165)
+                                                        .foregroundColor(Color.green)
+                                                })
+                                        }
+                                        //---------------------------------------------------- ambulance
+                                        HStack{
+                                            Image("ambulance")
+                                                .font(.system(size: 29))
+                                            VStack {
+                                                Text("Ambulance")
+                                                Text("\(emere.Ambulance)")
+                                                    .foregroundColor(Color.gray)
+                                                    .font(.footnote)
+                                                    .padding(.leading, -50)
+                                                
+                                                
+                                            }
+                                            Button(
+                                                action: {
+                                                    
+                                                    let telephone = "tel://"
+                                                    let formattedString = telephone + String(emere.Ambulance)
+                                                    guard let url = URL(string: formattedString) else { return }
+                                                    UIApplication.shared.open(url)
+                                                },
+                                                label: {
+                                                    Image(systemName: "phone.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 40.0)
+                                                        .padding(.leading, 120)
+                                                        .foregroundColor(Color.green)
+                                                })
+                                        }
+                                        //---------------------------------------------------- FireStation
+                                        HStack{
+                                            Image("fire")
+                                                .font(.system(size: 29))
+                                            VStack {
+                                                Text("Fire Station")
+                                                Text("\(emere.Fire)")
+                                                    .foregroundColor(Color.gray)
+                                                    .font(.footnote)
+                                                    .padding(.leading, -50)
+                                            }
+                                            Button(
+                                                action: {
+                                                    let telephone = "tel://"
+                                                    let formattedString = telephone + String(emere.Fire)
+                                                    guard let url = URL(string: formattedString) else { return }
+                                                    UIApplication.shared.open(url)
+                                                },
+                                                label: {
+                                                    Image(systemName: "phone.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 40.0)
+                                                        .padding(.leading, 120)
+                                                        .foregroundColor(Color.green)
+                                                })
+                                        }
+                                        //--------------------------------------- First list style
+                                    }
+                                    .scrollContentBackground(.hidden)
                                     .padding(.top, 150.0)
                                     .opacity(0.7)
                                     .foregroundColor(Color.black)
                                     .font(.system(size: 21))
-                                
-                                
-                            } else {
-                                
-                                List{
-                                    
-                                    
-                                    //---------------------------------------------------- police
-                                    HStack{
-                                        Image("police")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Police")
-                                            Text("\(emere.Police)")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.leading, -30)
-                                        }
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(emere.Police)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .padding(.leading, 165)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //---------------------------------------------------- ambulance
-                                    HStack{
-                                        Image("ambulance")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Ambulance")
-                                            Text("\(emere.Ambulance)")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.leading, -50)
-                                            
-                                            
-                                        }
-                                        Button(
-                                            action: {
-                                                
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(emere.Ambulance)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .padding(.leading, 120)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //---------------------------------------------------- FireStation
-                                    HStack{
-                                        Image("fire")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Fire Station")
-                                            Text("\(emere.Fire)")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.leading, -50)
-                                        }
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(emere.Fire)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .padding(.leading, 120)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //--------------------------------------- First list style
                                 }
-                                .scrollContentBackground(.hidden)
-                                .padding(.top, 150.0)
-                                .opacity(0.7)
-                                .foregroundColor(Color.black)
-                                .font(.system(size: 21))
                             }
                         }
-                    }
-                    //--------------------------------------- End of fist list. Second list start
-                    VStack{
-                        ForEach(emb) { embe  in
-                            let emb2 = embe.Embasy_n.split(separator: "/")
-                            
-                            List{
-                                if emb2.isEmpty {
-                                    
-                                    
-                                    HStack{
-                                        
-                                        Image("saudi")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Embassy")
-                                            
-                                            Text(embe.Embasy_n)
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.trailing, -30)
-                                        }
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + embe.Embasy_n
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .padding(.leading, 140)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    
-                                    
-                                }
+                        //--------------------------------------- End of fist list. Second list start
+                        VStack{
+                            ForEach(emb) { embe  in
+                                let emb2 = embe.Embasy_n.split(separator: "/")
                                 
-                                else {
-                                    
-                                    
-                                    ForEach(Array(emb2.enumerated()), id: \.offset) { i, element in
-                                        //---------------------------------------------------- embaccy
+                                List{
+                                    if emb2.isEmpty {
+                                        
+                                        
                                         HStack{
                                             
                                             Image("saudi")
@@ -249,7 +213,7 @@ struct MainPage: View {
                                             VStack {
                                                 Text("Embassy")
                                                 
-                                                Text(emb2[i])
+                                                Text(embe.Embasy_n)
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
                                                     .padding(.trailing, -30)
@@ -257,7 +221,7 @@ struct MainPage: View {
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
-                                                    let formattedString = telephone + emb2[i]
+                                                    let formattedString = telephone + embe.Embasy_n
                                                     guard let url = URL(string: formattedString) else { return }
                                                     UIApplication.shared.open(url)
                                                 },
@@ -270,68 +234,106 @@ struct MainPage: View {
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
+                                        
+                                        
                                     }
-                                }
-                                
-                                
-                                
-                                
-                                if embe.Consulate_no.isEmpty {
-                                }
-                                else {
-                                    //---------------------------------------------------- embaccy
-                                    HStack{
-                                        Image("saudi")
-                                            .font(.system(size: 29))
-                                        VStack {
-                                            Text("Affairs")
-                                            Text("\(embe.Consulate_no)")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                                .padding(.trailing, -15)
+                                    
+                                    else {
+                                        
+                                        
+                                        ForEach(Array(emb2.enumerated()), id: \.offset) { i, element in
+                                            //---------------------------------------------------- embaccy
+                                            HStack{
+                                                
+                                                Image("saudi")
+                                                    .font(.system(size: 29))
+                                                VStack {
+                                                    Text("Embassy")
+                                                    
+                                                    Text(emb2[i])
+                                                        .foregroundColor(Color.gray)
+                                                        .font(.footnote)
+                                                        .padding(.trailing, -30)
+                                                }
+                                                Button(
+                                                    action: {
+                                                        let telephone = "tel://"
+                                                        let formattedString = telephone + emb2[i]
+                                                        guard let url = URL(string: formattedString) else { return }
+                                                        UIApplication.shared.open(url)
+                                                    },
+                                                    label: {
+                                                        Image(systemName: "phone.circle.fill")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 40.0)
+                                                            .padding(.leading, 140)
+                                                            .foregroundColor(Color.green)
+                                                    })
+                                            }
                                         }
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + embe.Consulate_no
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .padding(.leading, 130)
-                                                    .foregroundColor(Color.green)
-                                            })
                                     }
+                                    
+                                    
+                                    
+                                    
+                                    if embe.Consulate_no.isEmpty {
+                                    }
+                                    else {
+                                        //---------------------------------------------------- embaccy
+                                        HStack{
+                                            Image("saudi")
+                                                .font(.system(size: 29))
+                                            VStack {
+                                                Text("Affairs")
+                                                Text("\(embe.Consulate_no)")
+                                                    .foregroundColor(Color.gray)
+                                                    .font(.footnote)
+                                                    .padding(.trailing, -15)
+                                            }
+                                            Button(
+                                                action: {
+                                                    let telephone = "tel://"
+                                                    let formattedString = telephone + embe.Consulate_no
+                                                    guard let url = URL(string: formattedString) else { return }
+                                                    UIApplication.shared.open(url)
+                                                },
+                                                label: {
+                                                    Image(systemName: "phone.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 40.0)
+                                                        .padding(.leading, 130)
+                                                        .foregroundColor(Color.green)
+                                                })
+                                        }
+                                    }
+                                    //--------------------------------------- Second list style
                                 }
-                                //--------------------------------------- Second list style
+                                .scrollContentBackground(.hidden)
+                                .padding(.top, 430.0)
+                                .opacity(0.7)
+                                .foregroundColor(Color.black)
+                                .font(.system(size: 19))
                             }
-                            .scrollContentBackground(.hidden)
-                            .padding(.top, 430.0)
-                            .opacity(0.7)
-                            .foregroundColor(Color.black)
-                            .font(.system(size: 19))
                         }
+                        VStack{
+                            NavigationLink(destination: addCity(),
+                                           label: {
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(Color.white)
+                            })
+                            .buttonStyle(GrowingButton())
+                        }
+                       
                     }
-                    ForEach(events){ cont in
-                        
-                        
-                        allCity(cityPic: "france" , cityName: cont.contry ?? "")}
+                    //---------------------------------------------------- Second list done
+                ForEach(events){ cont in
+                    
+                    
+                    allCity(cityPic: "france" , cityName: cont.contry ?? "")}
+                    
                 }
-                //---------------------------------------------------- Second list done
-                VStack{
-                    NavigationLink(destination: addCity(),
-                                   label: {
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(Color.white)
-                    })
-                    .buttonStyle(GrowingButton())
-                }
-                
-               
                 
             }.tabViewStyle(.page).preferredColorScheme(.light).onAppear{
                 fetchEvent()
@@ -455,7 +457,7 @@ struct Numb: Identifiable{
     let Country: String
     let Fire: Int
     let Police: Int
-   // let Image2: CKAsset?
+    let Image2: CKAsset?
     let id: CKRecord.ID
     
     
@@ -465,22 +467,22 @@ struct Numb: Identifiable{
         self.Ambulance = record["Ambulance"] as? Int ?? 0
         self.Country = record["Country"] as? String ?? ""
         self.Fire = record["Fire"] as? Int ?? 0
-       // self.Image2 = record["Image"] as? CKAsset
+        self.Image2 = record["Image"] as? CKAsset
         self.Police = record["Police"] as? Int ?? 0
         
         
     }
     
     
-//    var bannerImage : Image{
-//       // print(Image2,"🐱")
-//        let fileURL = Image2!.fileURL
-//            let data = try! Data(contentsOf: fileURL!)
-//            let uiImage = UIImage(data: data)!
-//            let image = Image(uiImage: uiImage)
-//            return image
-//
-//    }
+    var bannerImage : Image{
+       // print(Image2,"🐱")
+        let fileURL = Image2!.fileURL
+            let data = try! Data(contentsOf: fileURL!)
+            let uiImage = UIImage(data: data)!
+            let image = Image(uiImage: uiImage)
+            return image
+
+    }
 }
 
 struct GoodsMaster {

@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+
 @main
 struct OverseasApp: App {
+    
+    @StateObject var vm = ViewModel()
     var body: some Scene {
         WindowGroup {
-            MainPage()
+            
+            MainPage().environmentObject(vm)
+            
+          
+            
+//            MainPage().environment(\.managedObjectContext,
+//                                                PersistenceController.shared.container.viewContext)
+//            .environmentObject(vm)
+
         }
     }
 }

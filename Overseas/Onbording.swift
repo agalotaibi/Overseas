@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CloudKit
+import CoreData
 import CoreLocationUI
 import CoreLocation
 
@@ -14,14 +16,19 @@ extension CLLocation {
         CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1) }
     }
 }
+
 struct Onbording: View {
+    @EnvironmentObject var vm : ViewModel
+    
     @State private var selectedTab = 1
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
+    var nationality = ["","Saudi Arabia","Kawait"]
+    @State private var selectedNationality = ""
     
-    var nationality = ["Saudi Arabia", "USA", "UK", "Bahrin"]
-    @State private var selectedNationality = "UK"
+   
+  
 
     @Binding var shouldshowonb : Bool
     
@@ -88,10 +95,16 @@ struct Onbording: View {
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
                     
-                    
-                    PickerView()
-                    
-                    //.onAppear()
+                    VStack {
+                        Text("You selected: \(vm.nationality)")
+                        Picker("Please choose a color", selection: $vm.nationality) {
+                            ForEach(nationality, id: \.self) {
+                                Text($0)
+                            }
+                        }.pickerStyle(WheelPickerStyle())
+                        
+                    }
+                  
                     Spacer()
                     
                 }.tag(2)
@@ -128,32 +141,35 @@ struct Onbording: View {
                         
                     
                     VStack{
-                        //------------------------------
-                        LocationButton(.shareCurrentLocation){
-                            locationManager.requestLocation()
-                            if let location = locationManager.location {
-                                print("longitude: ",location.longitude)
-                                print("latitude: ",location.latitude)
-                                //------------------------------
-                                let location = CLLocation(latitude:location.latitude, longitude: location.longitude)
-                                location.fetchCityAndCountry { city, country, error in
-                                    guard let city = city, let country = country, error == nil else { return }
-                                    Cityname = city
-                                    Countryname = country
-                                 print(Cityname)
-                                }
-                            } else {
-                                print("INVALED!!!!!!!")
-                            }
-                        }//------------------------------
-                        .cornerRadius(30)
-                        .tint(Color("Yellow"))
-                        .foregroundColor(Color("darkBlue"))
-                        .padding()
-                        
-                    Button(action: {
+                                            //------------------------------
+                                            LocationButton(.shareCurrentLocation){
+                                                locationManager.requestLocation()
+                                                if let location = locationManager.location {
+                                                    print("longitude: ",location.longitude)
+                                                    print("latitude: ",location.latitude)
+                                                    //------------------------------
+                                                    let location = CLLocation(latitude:location.latitude, longitude: location.longitude)
+                                                    location.fetchCityAndCountry { city, country, error in
+                                                        guard let city = city, let country = country, error == nil else { return }
+                                                        Cityname = city
+                                                        Countryname = country
+                                                     print(Cityname)
+                                                    }
+                                                } else {
+                                                    print("INVALED!!!!!!!")
+                                                }
+                                            }//------------------------------
+                                            .cornerRadius(30)
+                                            .tint(Color("Yellow"))
+                                            .foregroundColor(Color("darkBlue"))
+                                            .padding()
                     
-                        shouldshowonb.toggle()
+                    Button(action: {
+                        
+                    shouldshowonb.toggle()
+                    
+                    
+                       
                     },label:{
                         
                         Image(systemName: "arrow.forward.circle")
@@ -172,33 +188,16 @@ struct Onbording: View {
                 
                 
                 
-            }//tab
-          //  .frame(width: .infinity, height: .infinity)
+            }
             .tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always))
+            .onAppear{
+                print(vm.nationality,"😀")
+            }
             
         }
     }
     
     
-}
-
-
-
-struct PickerView: View {
-    var nationality = ["Saudi Arabia", "USA", "UK", "Bahrin"]
-    @State private var selectedNationality = ""
-
-    var body: some View {
-        VStack {
-            Text("You selected: \(selectedNationality)")
-            Picker("Please choose a color", selection: $selectedNationality) {
-                ForEach(nationality, id: \.self) {
-                    Text($0)
-                }
-            }.pickerStyle(WheelPickerStyle())
-            
-        }
-    }
 }
 
 func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
@@ -209,10 +208,9 @@ func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ cit
     }
 }
 
-
 struct Onbording_Previews: PreviewProvider {
     static var previews: some View {
-        Onbording(shouldshowonb: .constant(true))
+        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel())        // , shouldshowonb: .constant(true)
     }
 }
 

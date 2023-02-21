@@ -17,6 +17,7 @@
 		31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E0298BEBF900130841 /* Nationality.swift */; };
 		31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E2298BEC0B00130841 /* Notification.swift */; };
 		719B91EB299919C800A09E8B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B91EA299919C800A09E8B /* LocationManager.swift */; };
+		E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE30C329A4E501008A2A93 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		31D4A8E0298BEBF900130841 /* Nationality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nationality.swift; sourceTree = "<group>"; };
 		31D4A8E2298BEC0B00130841 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		719B91EA299919C800A09E8B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E9BE30C329A4E501008A2A93 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				31420EC2298A6D6400EFD4C2 /* Preview Assets.xcassets */,
+				E9BE30C329A4E501008A2A93 /* ViewModel.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
+				E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */,
 				31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */,
 				31420EBB298A6D6400EFD4C2 /* OverseasApp.swift in Sources */,
 				31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */,
@@ -289,7 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Overseas/Preview Content\"";
-				DEVELOPMENT_TEAM = VYW22XXFPS;
+				DEVELOPMENT_TEAM = PV53J35PV4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -308,7 +312,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = twp.mp;
+				PRODUCT_BUNDLE_IDENTIFIER = Eclipce.Overseas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -329,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Overseas/Preview Content\"";
-				DEVELOPMENT_TEAM = MB5NQ72WT3;
+				DEVELOPMENT_TEAM = PV53J35PV4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

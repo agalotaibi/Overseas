@@ -30,7 +30,7 @@ struct Nationality: View {
 //                        }
 //            }.pickerStyle(.wheel)
             
-            PickerView()
+            //PickerView()
             
             Spacer()
         }

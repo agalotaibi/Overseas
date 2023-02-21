@@ -10,12 +10,12 @@ import SwiftUI
 
 @main
 struct OverseasApp: App {
-    
+    let persistenceController = PersistenceController.shared
     @StateObject var vm = ViewModel()
     var body: some Scene {
         WindowGroup {
             
-            MainPage().environmentObject(vm)
+            MainPage().environmentObject(vm).environment(\.managedObjectContext, persistenceController.container.viewContext)
             
           
             

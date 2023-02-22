@@ -17,7 +17,7 @@ struct MainPage: View {
     @State var emer :[Numb] = []
     @State var emb :[Emb] = []
     @State var National = ""
-    @State var imageName = ""
+    //@State var imageName = ""
     @State private var searchText = ""
     @State private var showingNatio = false
     @State private var showingNotifi = false
@@ -42,7 +42,7 @@ struct MainPage: View {
                     ZStack {
                         ForEach(emer) { emere  in
                             
-                            emere.bannerImage.resizable().edgesIgnoringSafeArea(.all)
+//                            emere.bannerImage.resizable().edgesIgnoringSafeArea(.all)
                             
                         }
                         //--------------------------------------- Title
@@ -331,7 +331,7 @@ struct MainPage: View {
                 ForEach(events){ cont in
                     
                     
-                    allCity(cityPic: "france" , cityName: cont.contry ?? "")}
+                    allCity(cityPic: "france" , cityName: cont.contry ?? "", police: Int(cont.police), amblance: Int(cont.ambulance), fire: Int(cont.fire))}
                     
                 }
                 
@@ -457,7 +457,7 @@ struct Numb: Identifiable{
     let Country: String
     let Fire: Int
     let Police: Int
-    let Image2: CKAsset?
+   // let Image2: CKAsset?
     let id: CKRecord.ID
     
     
@@ -467,22 +467,22 @@ struct Numb: Identifiable{
         self.Ambulance = record["Ambulance"] as? Int ?? 0
         self.Country = record["Country"] as? String ?? ""
         self.Fire = record["Fire"] as? Int ?? 0
-        self.Image2 = record["Image"] as? CKAsset
+     //   self.Image2 = record["Image"] as? CKAsset
         self.Police = record["Police"] as? Int ?? 0
         
         
     }
     
     
-    var bannerImage : Image{
-       // print(Image2,"🐱")
-        let fileURL = Image2!.fileURL
-            let data = try! Data(contentsOf: fileURL!)
-            let uiImage = UIImage(data: data)!
-            let image = Image(uiImage: uiImage)
-            return image
-
-    }
+//    var bannerImage : Image{
+//       // print(Image2,"🐱")
+//        let fileURL = Image2!.fileURL
+//            let data = try! Data(contentsOf: fileURL!)
+//            let uiImage = UIImage(data: data)!
+//            let image = Image(uiImage: uiImage)
+//            return image
+//
+//    }
 }
 
 struct GoodsMaster {
@@ -517,6 +517,9 @@ struct allCity: View {
 
     @State var cityPic = "france"
     @State var cityName = "France"
+    @State var police = 0
+    @State var amblance = 0
+    @State var fire = 0
     @State var em :[Emergency] = []
     let numberString = "111-222-3334" //change
 
@@ -553,10 +556,10 @@ struct allCity: View {
                     List{
                         //---------------------------------------------------- police
                         HStack(alignment: .center){
-                            Image("police").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                            Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                             VStack(alignment: .leading) {
                                 Text("Police")
-                                Text("999")
+                                Text(String(police))
                                     .foregroundColor(Color.gray)
                                     .font(.footnote)
                             }
@@ -564,7 +567,7 @@ struct allCity: View {
                             Button(
                                 action: {
                                     let telephone = "tel://"
-                                    let formattedString = telephone + numberString
+                                    let formattedString = telephone + String(police)
                                     guard let url = URL(string: formattedString) else { return }
                                     UIApplication.shared.open(url)
                                 },
@@ -582,7 +585,7 @@ struct allCity: View {
                                 .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                             VStack(alignment: .leading) {
                                 Text("Ambulance")
-                                Text("999")
+                                Text(String(amblance))
                                     .foregroundColor(Color.gray)
                                     .font(.footnote)
                             }
@@ -590,7 +593,7 @@ struct allCity: View {
                             Button(
                                 action: {
                                     let telephone = "tel://"
-                                    let formattedString = telephone + numberString
+                                    let formattedString = telephone + String(amblance)
                                     guard let url = URL(string: formattedString) else { return }
                                     UIApplication.shared.open(url)
                                 },
@@ -604,11 +607,11 @@ struct allCity: View {
                         }
                         //---------------------------------------------------- FireStation
                         HStack(alignment: .center){
-                            Image("fire")
+                            Image("fire1")
                                 .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                             VStack(alignment: .leading) {
                                 Text("Fire Station")
-                                Text("990")
+                                Text(String(fire))
                                     .foregroundColor(Color.gray)
                                     .font(.footnote)
                             }
@@ -616,7 +619,7 @@ struct allCity: View {
                             Button(
                                 action: {
                                     let telephone = "tel://"
-                                    let formattedString = telephone + numberString
+                                    let formattedString = telephone + String(fire)
                                     guard let url = URL(string: formattedString) else { return }
                                     UIApplication.shared.open(url)
                                 },

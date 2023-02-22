@@ -15,6 +15,9 @@ struct addCity: View {
     @State private var showingNotifi = false
     @State var em :[Emergency] = []
     @State private var contry = ""
+    @State private var ambulance = ""
+    @State private var fire = ""
+    @State private var police = ""
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @State private var shoeingAddscreen = false
@@ -27,39 +30,26 @@ struct addCity: View {
         VStack() {
             
             NavigationStack {
-                
-                //                List{
-                //                    ForEach(array) { emergency in
-                //
-                //                        HStack{
-                //                            Text(emergency.Country)
-                //                            Spacer()
-                //                            Button {
-                //
-                //                            } label: {
-                //                                Text("Add")
-                //                                    .foregroundColor(Color.blue)
-                //                            }
-                //
-                //                        }
-                //
-                //
-                //                    }
-                //                }.onAppear{
-                //                    fetchEvent()
-                //
-                //                }
-                //                .scrollContentBackground(.hidden)
-                
-                
-                
                 VStack{
                     List{
                         ForEach(events){ cont in
                             
-                       
-                            
-                            city(cityPic: "france" , cityName: cont.contry ?? "")}
+                            Group{
+                                
+                                city(cityPic: "france" , cityName: cont.contry ?? "")}.swipeActions {
+                                    Button(role: .destructive) {
+                                        viewContext.delete(cont)
+                                        do {
+                                            try viewContext.save()
+                                        } catch {
+                                            
+                                        }
+                                    } label: {
+                                        Image(systemName: "trash")
+                                    }
+                                }
+                        }
+
                         
                     }.scrollContentBackground(.hidden)
                 }
@@ -111,14 +101,14 @@ struct addCity: View {
                         Text(emergency.Country).searchCompletion(emergency)
                         Spacer()
                         Button {
-//                            var slected = emergency.Country
-//                            let cont = CountriesList(context: moc)
-//                            cont.country = emergency.Country
-//
-//                            try? moc.save()
+
                             
                             let cont = SavedCountry(context: viewContext)
                             cont.contry = emergency.Country
+                            cont.ambulance = Int16(emergency.Ambulance)
+                            cont.fire = Int16(emergency.Fire)
+                            cont.police = Int16(emergency.Police)
+                            
                             
                             do {
                                 try viewContext.save()
@@ -195,25 +185,6 @@ struct addCity: View {
     }
     }
     
-//    var searchResults: [String] {
-//        if searchText.isEmpty {
-//            return names
-//        } else {
-//            return names.filter { $0.contains(searchText) }
-//        }
-//
-//
-//    }
-    
-
-    
-    //    func fetchCount(){
-    //
-    //        let serCount = country(context: viewContext)
-    //        newcountry
-    //
-    //    }
-
 
 
 
@@ -271,12 +242,19 @@ struct city: View {
 struct Emergency: Identifiable{
     let record: CKRecord
     let Country: String
+    let Ambulance: Int
+    let Fire: Int
+    let Police: Int
+    
     let id: CKRecord.ID
     
     init(record: CKRecord){
         self.record = record
         self.id = record.recordID
         self.Country = record["Country"] as? String ?? ""
+        self.Ambulance = record["Ambulance"] as? Int ?? 0
+        self.Fire = record["Fire"] as? Int ?? 0
+        self.Police = record["Police"] as? Int ?? 0
        
     }
 

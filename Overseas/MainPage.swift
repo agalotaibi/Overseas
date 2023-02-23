@@ -54,7 +54,8 @@ struct MainPage: View {
                     ZStack {
                         ForEach(emer) { emere  in
                             
-                            emere.bannerImage.resizable().edgesIgnoringSafeArea(.all).brightness(-0.2)
+                            emere.bannerImage.resizable().scaledToFill()
+                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
                             
                         }
                         //--------------------------------------- Title
@@ -72,22 +73,24 @@ struct MainPage: View {
                         .listRowBackground(Color.white)
                         //--------------------------------------- List start
                         VStack{
+                            
                             ForEach(emer) { emere  in
                                 
                                 
                                 if emere.Police == emere.Ambulance {
                                     
+                                    
+                                    
                                     List{
-                                        HStack{
-                                            Image("police")
-                                                .font(.system(size: 29))
-                                            VStack {
+                                        HStack(alignment: .center){
+                                            Image("unif").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack(alignment: .leading) {
                                                 Text("Emergency number")
                                                 Text("\(emere.Police)")
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.leading, -80)
-                                            }.padding(.trailing,70)
+                                            }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
@@ -100,7 +103,6 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                    // .padding(.leading, 35)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }}.scrollContentBackground(.hidden)
@@ -116,16 +118,21 @@ struct MainPage: View {
                                         
                                         
                                         //---------------------------------------------------- police
-                                        HStack{
-                                            Image("police")
-                                                .font(.system(size: 29))
-                                            VStack {
-                                                Text("Police")
+                                        VStack{ let loca = country()
+                                            Text(" Emergency Number of \(loca)")
+                                                .font(.body)
+                                            .fontWeight(.semibold)}
+                                        HStack(alignment: .center){
+                                            Image("police1")
+                                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack(alignment: .leading) {
+                                                Text("police")
                                                 Text("\(emere.Police)")
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.leading, -30)
+                                                    
                                             }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
@@ -138,23 +145,23 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                        .padding(.leading, 165)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
                                         //---------------------------------------------------- ambulance
-                                        HStack{
-                                            Image("ambulance")
-                                                .font(.system(size: 29))
-                                            VStack {
+                                        HStack(alignment: .center){
+                                            Image("ambl")
+                                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack(alignment: .leading) {
                                                 Text("Ambulance")
                                                 Text("\(emere.Ambulance)")
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.leading, -50)
+                                                   
                                                 
                                                 
                                             }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     
@@ -168,21 +175,21 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                        .padding(.leading, 120)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
                                         //---------------------------------------------------- FireStation
-                                        HStack{
-                                            Image("fire")
-                                                .font(.system(size: 29))
-                                            VStack {
+                                        HStack(alignment: .center){
+                                            Image("fire1")
+                                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack(alignment: .leading) {
                                                 Text("Fire Station")
                                                 Text("\(emere.Fire)")
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.leading, -50)
+                                                    
                                             }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
@@ -195,7 +202,6 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                        .padding(.leading, 120)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
@@ -215,21 +221,27 @@ struct MainPage: View {
                                 let emb2 = embe.Embasy_n.split(separator: "/")
                                 
                                 List{
+                                    
+                                    VStack{
+                                        Text("The Emergancy Number of \(National)")
+                                            .font(.body)
+                                        .fontWeight(.semibold)}
+                                    
                                     if emb2.isEmpty {
                                         
-                                        
-                                        HStack{
+                                        HStack(alignment: .center){
                                             
-                                            Image("saudi")
-                                                .font(.system(size: 29))
-                                            VStack {
+                                            Image("emb")
+                                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack (alignment: .leading){
                                                 Text("Embassy")
                                                 
                                                 Text(embe.Embasy_n)
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.trailing, -30)
+                                                   
                                             }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
@@ -242,7 +254,6 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                        .padding(.leading, 140)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
@@ -255,18 +266,19 @@ struct MainPage: View {
                                         
                                         ForEach(Array(emb2.enumerated()), id: \.offset) { i, element in
                                             //---------------------------------------------------- embaccy
-                                            HStack{
+                                            HStack(alignment: .center){
                                                 
-                                                Image("saudi")
-                                                    .font(.system(size: 29))
-                                                VStack {
+                                                Image("emb")
+                                                    .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                VStack(alignment: .leading) {
                                                     Text("Embassy")
                                                     
                                                     Text(emb2[i])
                                                         .foregroundColor(Color.gray)
                                                         .font(.footnote)
-                                                        .padding(.trailing, -30)
+                                                        
                                                 }
+                                                Spacer()
                                                 Button(
                                                     action: {
                                                         let telephone = "tel://"
@@ -293,16 +305,17 @@ struct MainPage: View {
                                     }
                                     else {
                                         //---------------------------------------------------- embaccy
-                                        HStack{
-                                            Image("saudi")
-                                                .font(.system(size: 29))
-                                            VStack {
+                                        HStack(alignment: .center){
+                                            Image("quns")
+                                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                            VStack(alignment: .leading){
                                                 Text("Affairs")
                                                 Text("\(embe.Consulate_no)")
                                                     .foregroundColor(Color.gray)
                                                     .font(.footnote)
-                                                    .padding(.trailing, -15)
+                                                   
                                             }
+                                            Spacer()
                                             Button(
                                                 action: {
                                                     let telephone = "tel://"
@@ -315,7 +328,6 @@ struct MainPage: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 40.0)
-                                                        .padding(.leading, 130)
                                                         .foregroundColor(Color.green)
                                                 })
                                         }
@@ -347,15 +359,22 @@ struct MainPage: View {
                     
                     ZStack (alignment: .leading){
                         
-                        Image(cityPic).resizable().scaledToFill()
-                            .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+//                        Image(cityPic).resizable().scaledToFill()
+//                            .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+                        ForEach(emer) { emere  in
+
+                            emere.bannerImage.resizable().scaledToFill()
+                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+
+                        }
+
                         
                         
                         VStack{
                             NavigationLink(destination: addCity(),
                                            label: {
                                 Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
-                                    .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 100,  alignment: .trailing).foregroundColor(Color.white)
+                                    .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 150,  alignment: .trailing).foregroundColor(Color.white)
                                 
                                 
                             })
@@ -373,8 +392,15 @@ struct MainPage: View {
                             
                             VStack
                             {
+                                
                                 List{
                                     //---------------------------------------------------- police
+                                    VStack(alignment: .leading) {
+                                        Text("Emergency Number of \(cont.contry ?? "")")
+                                            .font(.body)
+                                            .fontWeight(.semibold)
+                                        
+                                    }
                                     HStack(alignment: .center){
                                         Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                                         VStack(alignment: .leading) {
@@ -462,9 +488,17 @@ struct MainPage: View {
                             
                             VStack
                             {
+                                
+                                
                                 List{
                                     //---------------------------------------------------- embaccy
                                     
+                                    VStack(alignment: .leading) {
+                                        Text("Your Country Affairs")
+                                            .font(.body)
+                                            .fontWeight(.semibold)
+                                        
+                                    }
                                     HStack(alignment: .center){
                                         Image("emb")
                                             .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
@@ -495,7 +529,7 @@ struct MainPage: View {
                                         Image("quns")
                                             .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                                         VStack (alignment: .leading){
-                                            Text("Consulent")
+                                            Text("Your Country Affairs")
                                             Text(cont.qunsl ?? "")
                                                 .foregroundColor(Color.gray)
                                                 .font(.footnote)
@@ -533,9 +567,9 @@ struct MainPage: View {
                     
                 }
                     
-                }.edgesIgnoringSafeArea(.all)
+            }.edgesIgnoringSafeArea(.all)
                 
-            }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).preferredColorScheme(.light).onAppear{
+        }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).preferredColorScheme(.light).onAppear{
                 fetchEvent()
                 fetchEvent2(National: vm.nationality)
 
@@ -678,9 +712,10 @@ struct Numb: Identifiable{
        // print(Image2,"🐱")
         guard let fileURL = Image2?.fileURL else {return Image("earth")}
         let data = try! Data(contentsOf: fileURL)
-        guard let uiImage = UIImage(data: data) else { return Image(uiImage: UIImage(named: "earth")!) }
+        guard let uiImage = UIImage(data: data) else { return Image("earth") }
         let image = Image(uiImage: uiImage)
         return image
+//        Image(uiImage: UIImage(named: "earth")!)
 
     }
 }

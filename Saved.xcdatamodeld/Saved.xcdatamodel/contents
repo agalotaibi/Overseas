@@ -3,7 +3,12 @@
     <entity name="SavedCountry" representedClassName="SavedCountry" syncable="YES" codeGenerationType="class">
         <attribute name="ambulance" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="contry" optional="YES" attributeType="String"/>
+        <attribute name="embassy" optional="YES" attributeType="String"/>
         <attribute name="fire" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="nation" optional="YES" attributeType="String"/>
         <attribute name="police" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="qunsl" optional="YES" attributeType="String"/>
+        <attribute name="vistedcont" optional="YES" attributeType="String"/>
     </entity>
 </model>

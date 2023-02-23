@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Nationality: View {
+struct National: View {
     @State var options = ["Swift", "Kotlin", "Java", "JavaScript"] // 1
      @State var selectedItem = "Swift"
      
@@ -37,8 +37,8 @@ struct Nationality: View {
     }
 }
 
-struct Nationality_Previews: PreviewProvider {
+struct National_Previews: PreviewProvider {
     static var previews: some View {
-        Nationality()
+        National()
     }
 }

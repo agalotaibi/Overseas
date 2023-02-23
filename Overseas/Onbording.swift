@@ -53,12 +53,10 @@ struct Onbording: View {
                     
                     Text("Welcome to  ")
                         .font(.system(size: 48))
-                        .foregroundColor(Color("darkBlue"))
                         .frame(maxWidth: 300, alignment: .leading)
                     
                     Text("Overseas")
                         .font(.system(size: 48))
-                        .foregroundColor(Color("Yellow"))
                         .fontWeight(.bold)
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
@@ -79,24 +77,24 @@ struct Onbording: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color("darkBlue"))
-                        .frame(width: 250)
+                        .frame(width: 200)
                         .padding()
                     
+                    Spacer()
                     
                     Text("Please Select")
                         .font(.system(size: 40))
-                        .foregroundColor(Color("ourGray"))
                         .frame(maxWidth: 300, alignment: .leading)
                     
                     Text("Your Nationality")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
-                        .foregroundColor(Color("Yellow"))
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
                     
+                    Spacer()
                     VStack {
-                        Text("You selected: \(vm.nationality)")
+                        Text("You selected: \(vm.nationality)").padding().background(Color("yellow")).cornerRadius(40)
                         Picker("Please choose a color", selection: $vm.nationality) {
                             ForEach(nationality, id: \.self) {
                                 Text($0)
@@ -118,16 +116,13 @@ struct Onbording: View {
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color("darkBlue"))
                         .frame(width: 150)
-                        .padding()
-                    
+                        .padding().padding(.bottom)
                     Text("Please Allow ")
                         .font(.system(size: 40))
-                        .foregroundColor(Color("darkBlue"))
                         .frame(maxWidth: 300, alignment: .leading)
                     
                     Text("Access location")
                         .font(.system(size: 40))
-                        .foregroundColor(Color("Yellow"))
                         .fontWeight(.bold)
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
@@ -160,7 +155,7 @@ struct Onbording: View {
                                                 }
                                             }//------------------------------
                                             .cornerRadius(30)
-                                            .tint(Color("Yellow"))
+                                            .tint(Color("yellow"))
                                             .foregroundColor(Color("darkBlue"))
                                             .padding()
                     
@@ -175,7 +170,7 @@ struct Onbording: View {
                         Image(systemName: "arrow.forward.circle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("Yellow"))
+                            .foregroundColor(Color("yellow"))
                             .frame(width: 50)
                         
                     })

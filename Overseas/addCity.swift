@@ -18,11 +18,18 @@ struct addCity: View {
     @State private var ambulance = ""
     @State private var fire = ""
     @State private var police = ""
+    @State private var embassy = ""
+    @State private var nation = ""
+    @State private var qunsl = ""
+    @State private var vistedcont = ""
+    @State var imageName = ""
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @State private var shoeingAddscreen = false
     @FetchRequest(sortDescriptors: [])
     private var events: FetchedResults<SavedCountry>
+    @State var emb :[Emb] = []
+
     
     
     var body: some View {
@@ -36,7 +43,7 @@ struct addCity: View {
                             
                             Group{
                                 
-                                city(cityPic: "france" , cityName: cont.contry ?? "")}.swipeActions {
+                                city(cityPic: "earth" , cityName: cont.contry ?? "")}.swipeActions {
                                     Button(role: .destructive) {
                                         viewContext.delete(cont)
                                         do {
@@ -100,6 +107,8 @@ struct addCity: View {
                     HStack{
                         Text(emergency.Country).searchCompletion(emergency)
                         Spacer()
+                        
+                        
                         Button {
 
                             
@@ -109,6 +118,19 @@ struct addCity: View {
                             cont.fire = Int16(emergency.Fire)
                             cont.police = Int16(emergency.Police)
                             
+                            for embss in emb{
+
+                                let vis = SavedCountry(context: viewContext)
+                                vis.embassy = embss.Embasy_n
+                                vis.qunsl = embss.Consulate_no
+
+                            }
+                            
+                                
+                                    //fetchSpecific()
+                                
+                            
+                            
                             
                             do {
                                 try viewContext.save()
@@ -117,6 +139,7 @@ struct addCity: View {
                                 presentationMode.wrappedValue.dismiss()
                                 
                             }
+                            
                             
                         } label: {
                             Text("Add")
@@ -134,7 +157,7 @@ struct addCity: View {
                 
             }
             }.sheet(isPresented: $showingNatio) {
-                Nationality()
+                National()
             }.sheet(isPresented: $showingNotifi) {
                 Notification()
             }
@@ -142,7 +165,7 @@ struct addCity: View {
         }//vstack
         
         
-    var array : [Emergency]{
+    var array : [Emergency] {
         searchText.isEmpty ? em : em.filter{$0.Country.contains(searchText)
         }
     }
@@ -166,21 +189,13 @@ struct addCity: View {
     }
     
     func fetchSpecific(){
-        em.removeAll()
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType:"Emergency", predicate: predicate)
-        let operation = CKQueryOperation(query: query)
-        operation.recordMatchedBlock = {recordID, result in
-            switch result{
-            case .success(let record):
-                let emer = Emergency(record: record)
-                em.append(emer)
-            case .failure(let error):
-                print("Error:\(error.localizedDescription)")
-            }
+        for embss in emb{
+            
+            let vis = SavedCountry(context: viewContext)
+            vis.embassy = embss.Embasy_n
+            vis.qunsl = embss.Consulate_no
+            
         }
-        
-        CKContainer.default().publicCloudDatabase.add(operation)
         
     }
     }
@@ -199,7 +214,7 @@ struct addCity: View {
 
 struct city: View {
 
-    @State var cityPic = "france"
+    @State var cityPic = "earth"
     @State var cityName = ""
     @State private var country = ""
     @State var em :[Emergency] = []
@@ -245,7 +260,8 @@ struct Emergency: Identifiable{
     let Ambulance: Int
     let Fire: Int
     let Police: Int
-    
+    let Image2: CKAsset?
+
     let id: CKRecord.ID
     
     init(record: CKRecord){
@@ -255,10 +271,22 @@ struct Emergency: Identifiable{
         self.Ambulance = record["Ambulance"] as? Int ?? 0
         self.Fire = record["Fire"] as? Int ?? 0
         self.Police = record["Police"] as? Int ?? 0
+        self.Image2 = record["Image"] as? CKAsset
        
     }
+    
+    var bannerImage : Image{
+        // print(Image2,"🐱")
+        let fileURL = Image2!.fileURL
+        let data = try! Data(contentsOf: fileURL!)
+        let uiImage = UIImage(data: data)!
+        let image = Image(uiImage: uiImage)
+        return image
+    
+        }
 
     
     
 }
+
 

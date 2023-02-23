@@ -157,7 +157,7 @@ struct addCity: View {
                 
             }
             }.sheet(isPresented: $showingNatio) {
-                National()
+                Nationality()
             }.sheet(isPresented: $showingNotifi) {
                 Notification()
             }
@@ -275,15 +275,6 @@ struct Emergency: Identifiable{
        
     }
     
-    var bannerImage : Image{
-        // print(Image2,"🐱")
-        let fileURL = Image2!.fileURL
-        let data = try! Data(contentsOf: fileURL!)
-        let uiImage = UIImage(data: data)!
-        let image = Image(uiImage: uiImage)
-        return image
-    
-        }
 
     
     

@@ -74,7 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				31420EBA298A6D6400EFD4C2 /* OverseasApp.swift */,
-				31420EBC298A6D6400EFD4C2 /* ContentView.swift */,
 				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
 				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
@@ -92,6 +91,7 @@
 			children = (
 				31420EC2298A6D6400EFD4C2 /* Preview Assets.xcassets */,
 				E9BE30C329A4E501008A2A93 /* ViewModel.swift */,
+				31420EBC298A6D6400EFD4C2 /* ContentView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";

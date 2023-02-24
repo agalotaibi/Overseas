@@ -19,7 +19,6 @@ extension CLLocation {
 
 struct Onbording: View {
     @EnvironmentObject var vm : ViewModel
-    
     @State private var selectedTab = 1
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""

@@ -7,12 +7,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var vm : ViewModel
+   // @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         VStack{
             
-            MainPage().environmentObject(ViewModel())
+           // MainPage().environmentObject(ViewModel())
         }
                   }
               

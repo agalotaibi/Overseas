@@ -79,6 +79,8 @@
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
 				31D4A8E0298BEBF900130841 /* Nationality.swift */,
 				31D4A8E2298BEC0B00130841 /* Notification.swift */,
+				E9BE30C329A4E501008A2A93 /* ViewModel.swift */,
+				31420EBC298A6D6400EFD4C2 /* ContentView.swift */,
 				31420EBE298A6D6400EFD4C2 /* Assets.xcassets */,
 				31420EC0298A6D6400EFD4C2 /* Overseas.entitlements */,
 				31420EC1298A6D6400EFD4C2 /* Preview Content */,
@@ -90,8 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				31420EC2298A6D6400EFD4C2 /* Preview Assets.xcassets */,
-				E9BE30C329A4E501008A2A93 /* ViewModel.swift */,
-				31420EBC298A6D6400EFD4C2 /* ContentView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";

@@ -34,6 +34,8 @@ struct addCity: View {
     @FetchRequest(sortDescriptors: [])
     private var events: FetchedResults<SavedCountry>
     @State var emb :[Emb] = []
+    @State var emer2 :[Numb2] = []
+    
 
     
     
@@ -48,7 +50,50 @@ struct addCity: View {
                             
                             Group{
                                 
-                                city(cityPic: "earth" , cityName: cont.contry ?? "")}.swipeActions {
+                                ZStack (alignment: .leading){
+                                    
+                                    ForEach(emer2) { emere  in
+                                        
+                                     //   if emere.Country == cont.contry ?? ""{
+                                            
+                                            emere.bannerImage2.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 330, height: 90)
+                                            .cornerRadius(18)
+                                            .brightness(-0.1)
+                                                
+                                            
+                                        }
+                                    
+            //                        Image(cityPic)
+            //                            .resizable()
+            //                            .aspectRatio(contentMode: .fill)
+            //                            .frame(width: 330, height: 90)
+            //                            .cornerRadius(18)
+            //                            .overlay( Rectangle()
+            //                                .foregroundColor(.black)
+            //                                .cornerRadius(18)
+            //                                .opacity(0.1))
+                                    
+                                    
+                                    Text(cont.contry ?? "")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .fontWeight(.black)
+                                        .foregroundColor(.white)
+                                        .padding()
+                                    
+                                    
+                                }.padding(.horizontal,40).onAppear(){
+                                    let location = cont.contry ?? ""
+                                    fetchImage(loca:location)}
+                                
+//                                city(cityPic: "earth" , cityName: cont.contry ?? "")
+                                
+                                
+                                
+                            }.swipeActions {
                                     Button(role: .destructive) {
                                         viewContext.delete(cont)
                                         do {
@@ -71,40 +116,40 @@ struct addCity: View {
                     .font(.system(size: 30))
                 
                 
-                    .toolbar{
-                        ToolbarItemGroup(placement: .navigationBarTrailing){
-                            
-                            Menu {
-                                Section {
-                                    Button(action: {}) {
-                                        Label("Edit List", systemImage: "pencil")
-                                    }
-                                    
-                                    Button(action: {
-                                        showingNatio.toggle()
-                                    }) {
-                                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
-                                    }
-                                    
-                                    Button(action: {
-                                        showingNotifi.toggle()
-                                    }) {
-                                        Label("Notification", systemImage: "bell.badge")
-                                    }
-                                }
-                                
-                            }label: {
-                                Image(systemName: "ellipsis.circle")
-                                    .resizable()
-                                    .scaledToFit()
-                                
-                                    .frame(width: 22)
-                                    .frame(maxWidth: 330,  alignment: .trailing)
-                                    .padding(.top)
-                            }
-                            
-                        }//ToolbarItemGroup
-                    }//toolbar
+//                    .toolbar{
+//                        ToolbarItemGroup(placement: .navigationBarTrailing){
+//
+//                            Menu {
+//                                Section {
+//                                    Button(action: {}) {
+//                                        Label("Edit List", systemImage: "pencil")
+//                                    }
+//
+//                                    Button(action: {
+//                                        showingNatio.toggle()
+//                                    }) {
+//                                        Label("Edit Nationality", systemImage: "globe.asia.australia.fill")
+//                                    }
+//
+//                                    Button(action: {
+//                                        showingNotifi.toggle()
+//                                    }) {
+//                                        Label("Notification", systemImage: "bell.badge")
+//                                    }
+//                                }
+//
+//                            }label: {
+//                                Image(systemName: "ellipsis.circle")
+//                                    .resizable()
+//                                    .scaledToFit()
+//
+//                                    .frame(width: 22)
+//                                    .frame(maxWidth: 330,  alignment: .trailing)
+//                                    .padding(.top)
+//                            }
+//
+//                        }//ToolbarItemGroup
+//                    }//toolbar
                 //.searchable(text: $searchText)
             }.searchable(text: $searchText) {
                 ForEach(array) { emergency in
@@ -118,7 +163,7 @@ struct addCity: View {
 
                             
                          //   let cont = SavedCountry(context: viewContext)
-                          var con = emergency.Country
+                            var con = emergency.Country
                             var amb = String(emergency.Ambulance)
                             var fire = String(emergency.Fire)
                             var pol = String(emergency.Police)
@@ -160,11 +205,11 @@ struct addCity: View {
                
                 
             }
-            }.sheet(isPresented: $showingNatio) {
-                Nationality()
-            }.sheet(isPresented: $showingNotifi) {
-                Notification()
-            }
+            }//.sheet(isPresented: $showingNatio) {
+             //   Nationality()
+//            }.sheet(isPresented: $showingNotifi) {
+//                Notification()
+//            }
             
         }//vstack
         
@@ -242,6 +287,32 @@ struct addCity: View {
     
 
     }
+    func fetchImage(loca:String){
+        
+        emer2.removeAll()
+        
+      
+        
+        let predicate = NSPredicate(
+            format: "Country == %@",
+            loca)
+        let query = CKQuery(recordType:"Emergency", predicate: predicate)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.recordMatchedBlock = {recordID, result in
+            switch result{
+            case .success(let record):
+                let event = Numb2(record: record)
+                emer2.append(event)
+               
+            case .failure(let error):
+                print("Error:\(error.localizedDescription)")
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
+
+    }
     }
     
 
@@ -262,6 +333,7 @@ struct city: View {
     @State var cityName = ""
     @State private var country = ""
     @State var em :[Emergency] = []
+    @State var emer2 :[Numb2] = []
     //@FetchRequest(sortDescriptors: []) var countries: FetchedResults <CountryList>
     @Environment(\.managedObjectContext) var moc
 
@@ -271,21 +343,34 @@ struct city: View {
         
                     ZStack (alignment: .leading){
                         
-                        Image(cityPic)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 360, height: 100)
-                            .cornerRadius(7)
-                            .overlay( Rectangle()
-                                .foregroundColor(.black)
-                                .cornerRadius(7)
-                                .opacity(0.4))
+                        ForEach(emer2) { emere  in
+                            
+                         //   if emere.Country == cont.contry ?? ""{
+                                
+                                emere.bannerImage2.resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 330, height: 90)
+                                .cornerRadius(18)
+                                .brightness(-0.2)
+                                    
+                                
+                            }
+                        
+//                        Image(cityPic)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                            .frame(width: 330, height: 90)
+//                            .cornerRadius(18)
+//                            .overlay( Rectangle()
+//                                .foregroundColor(.black)
+//                                .cornerRadius(18)
+//                                .opacity(0.1))
                         
                         
                         Text(cityName)
+                            .font(.largeTitle)
                             .foregroundColor(.white)
                             .bold()
-                            .font(.system(.largeTitle, design: .rounded))
                             .fontWeight(.black)
                             .foregroundColor(.white)
                             .padding()

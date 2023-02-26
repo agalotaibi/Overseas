@@ -10,10 +10,14 @@ import CloudKit
 
 struct addCity: View {
     
+    @EnvironmentObject var vm : ViewModel
+    
     @State private var searchText = ""
+    @State private var locaiton = ""
     @State private var showingNatio = false
     @State private var showingNotifi = false
     @State var em :[Emergency] = []
+    @State var embb :[Emb] = []
     @State private var contry = ""
     @State private var ambulance = ""
     @State private var fire = ""
@@ -23,6 +27,7 @@ struct addCity: View {
     @State private var qunsl = ""
     @State private var vistedcont = ""
     @State var imageName = ""
+    @State var embas2 = ""
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     @State private var shoeingAddscreen = false
@@ -112,33 +117,31 @@ struct addCity: View {
                         Button {
 
                             
-                            let cont = SavedCountry(context: viewContext)
-                            cont.contry = emergency.Country
-                            cont.ambulance = Int16(emergency.Ambulance)
-                            cont.fire = Int16(emergency.Fire)
-                            cont.police = Int16(emergency.Police)
+                         //   let cont = SavedCountry(context: viewContext)
+                          var con = emergency.Country
+                            var amb = String(emergency.Ambulance)
+                            var fire = String(emergency.Fire)
+                            var pol = String(emergency.Police)
+                            locaiton = emergency.Country
+                           
                             
-                            for embss in emb{
-
-                                let vis = SavedCountry(context: viewContext)
-                                vis.embassy = embss.Embasy_n
-                                vis.qunsl = embss.Consulate_no
-
-                            }
                             
+                           fetchEvent2(National: vm.nationality, loca: locaiton,Fire: fire, Ambulance: amb,police: pol)
+//                            for embss in emb{
+//
+//                                let vis = SavedCountry(context: viewContext)
+//                                vis.embassy = embss.Embasy_n
+//                                vis.qunsl = embss.Consulate_no
+//
+//                            }
+                            
+                               
+                          
+                            //fetchSpecific()
                                 
-                                    //fetchSpecific()
-                                
                             
                             
                             
-                            do {
-                                try viewContext.save()
-                                
-                            } catch {
-                                presentationMode.wrappedValue.dismiss()
-                                
-                            }
                             
                             
                         } label: {
@@ -154,6 +157,7 @@ struct addCity: View {
                 
             }.onAppear{
                 fetchEvent()
+               
                 
             }
             }.sheet(isPresented: $showingNatio) {
@@ -188,15 +192,55 @@ struct addCity: View {
         
     }
     
-    func fetchSpecific(){
-        for embss in emb{
-            
-            let vis = SavedCountry(context: viewContext)
-            vis.embassy = embss.Embasy_n
-            vis.qunsl = embss.Consulate_no
-            
-        }
+    func fetchEvent2(National: String, loca: String,Fire: String, Ambulance: String,police: String){
+       
+        //
+        embb.removeAll()
+       // print("🦋🦋🦋🦋-------------",National)
+       // print("⛑⛑⛑",National)
         
+        let predicate = NSPredicate(
+            format: "Nationality == %@ && Country == %@",
+            National,loca)
+
+        let query = CKQuery(recordType:"Country", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        operation.recordMatchedBlock = {recordID, result in
+          //  print("🌈",loca)
+            switch result{
+            case .success(let record):
+                let event = Emb(record: record)
+                embb.append(event)
+                print("🐙",loca)
+                for embss in embb{
+                    let vis = SavedCountry(context: viewContext)
+                            vis.embassy = embss.Embasy_n
+                            vis.qunsl = embss.Consulate_no
+                    vis.fire = Int16(Fire) ?? 0
+                    vis.ambulance =  Int16(Ambulance) ?? 0
+                    vis.contry = loca
+                    vis.police =  Int16(police) ?? 0
+                
+                                          }
+                
+                do {
+                    try viewContext.save()
+                    print("🐊🐊")
+                    
+                } catch {
+                    presentationMode.wrappedValue.dismiss()
+                    
+                }
+
+            case .failure(let error):
+                print("Error:\(error.localizedDescription)")
+            }
+        }
+
+        CKContainer.default().publicCloudDatabase.add(operation)
+        
+    
+
     }
     }
     
@@ -279,5 +323,7 @@ struct Emergency: Identifiable{
     
     
 }
+
+
 
 

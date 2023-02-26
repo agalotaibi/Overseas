@@ -15,6 +15,7 @@ struct MainPage: View {
     @EnvironmentObject var vm : ViewModel
     
     @State var emer :[Numb] = []
+    @State var emer2 :[Numb2] = []
     @State var emb :[Emb] = []
     @State var National = ""
     @State var imageName = ""
@@ -63,7 +64,7 @@ struct MainPage: View {
                             
                             let loca = country()
                             
-                            Text("\(loca)")
+                            Text("\(loca)").multilineTextAlignment(.center)
                             Divider()
                         }
                         .foregroundColor(Color.white)
@@ -223,7 +224,7 @@ struct MainPage: View {
                                 List{
                                     
                                     VStack{
-                                        Text("The Emergancy Number of \(National)")
+                                        Text("The Emergancy Numbers")
                                             .font(.body)
                                         .fontWeight(.semibold)}
                                     
@@ -355,18 +356,17 @@ struct MainPage: View {
                 ForEach(events){ cont in
                     
                     
-//                    allCity(cityPic: "earth" , cityName: cont.contry ?? "", police: Int(cont.police), amblance: Int(cont.ambulance), fire: Int(cont.fire))
-                    
                     ZStack (alignment: .leading){
-                        
-//                        Image(cityPic).resizable().scaledToFill()
-//                            .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
-                        ForEach(emer) { emere  in
-
-                            emere.bannerImage.resizable().scaledToFill()
-                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
-
-                        }
+             
+                        ForEach(emer2) { emere  in
+                            
+                         //   if emere.Country == cont.contry ?? ""{
+                                
+                                emere.bannerImage2.resizable().scaledToFill()
+                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+                                
+                            }
+                      //  }
 
                         
                         
@@ -382,6 +382,7 @@ struct MainPage: View {
                             
                             VStack {
                                 Text(cont.contry ?? "")
+                                    .multilineTextAlignment(.center)
                                 
                             }
                             .foregroundColor(Color.white)
@@ -396,7 +397,7 @@ struct MainPage: View {
                                 List{
                                     //---------------------------------------------------- police
                                     VStack(alignment: .leading) {
-                                        Text("Emergency Number of \(cont.contry ?? "")")
+                                        Text("Emergency Numbers")
                                             .font(.body)
                                             .fontWeight(.semibold)
                                         
@@ -560,6 +561,9 @@ struct MainPage: View {
                             }
                             
                             
+                        }.onAppear(){
+                            let location = cont.contry ?? ""
+                            fetchImage(loca:location)
                         }
                     }
                     
@@ -570,8 +574,11 @@ struct MainPage: View {
             }.edgesIgnoringSafeArea(.all)
                 
         }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).preferredColorScheme(.light).onAppear{
-                fetchEvent()
-                fetchEvent2(National: vm.nationality)
+        
+
+            fetchEvent()
+            fetchEvent2(National: vm.nationality)
+            
 
             }
         }.fullScreenCover(isPresented: $shouldshowonb ){
@@ -611,6 +618,33 @@ struct MainPage: View {
             case .success(let record):
                 let event = Numb(record: record)
                 emer.append(event)
+               
+            case .failure(let error):
+                print("Error:\(error.localizedDescription)")
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
+
+    }
+    
+    func fetchImage(loca:String){
+        
+        emer2.removeAll()
+        
+      
+        
+        let predicate = NSPredicate(
+            format: "Country == %@",
+            loca)
+        let query = CKQuery(recordType:"Emergency", predicate: predicate)
+        
+        let operation = CKQueryOperation(query: query)
+        operation.recordMatchedBlock = {recordID, result in
+            switch result{
+            case .success(let record):
+                let event = Numb2(record: record)
+                emer2.append(event)
                
             case .failure(let error):
                 print("Error:\(error.localizedDescription)")
@@ -720,9 +754,35 @@ struct Numb: Identifiable{
     }
 }
 
-struct GoodsMaster {
-       var image:UIImage!
-   }
+struct Numb2: Identifiable{
+    let record: CKRecord
+    let Image2: CKAsset?
+    let Country: String
+    let id: CKRecord.ID
+    
+    
+    init(record: CKRecord){
+        self.record = record
+        self.id = record.recordID
+        self.Country = record["Country"] as? String ?? ""
+        self.Image2 = record["Image"] as? CKAsset
+        
+    }
+    
+    
+    var bannerImage2 : Image{
+       // print(Image2,"🐱")
+        guard let fileURL = Image2?.fileURL else {return Image("earth")}
+        let data = try! Data(contentsOf: fileURL)
+        guard let uiImage = UIImage(data: data) else { return Image("earth") }
+        let image = Image(uiImage: uiImage)
+        return image
+//        Image(uiImage: UIImage(named: "earth")!)
+
+    }
+}
+
+
 
 
 struct Emb: Identifiable{

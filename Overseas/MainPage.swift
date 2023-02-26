@@ -38,7 +38,6 @@ struct MainPage: View {
     @State private var qunsl = ""
     @State private var vistedcont = ""
     let numberString = "111-222-3334" //change
-    @State private var currentTab = 0
     
     
     
@@ -51,7 +50,7 @@ struct MainPage: View {
         VStack{
         
         NavigationView {
-            TabView(selection: $currentTab){
+            TabView{
                 VStack{
                     ZStack {
                         ForEach(emer) { emere  in
@@ -353,7 +352,7 @@ struct MainPage: View {
                                 .buttonStyle(GrowingButton())
                             }
                         }
-                }.tag(0)
+                    }
                     //---------------------------------------------------- Second list done
                 ForEach(events){ cont in
                     
@@ -572,9 +571,6 @@ struct MainPage: View {
                     
                     
                     
-                }
-                .tag(1).onAppear() {
-                    self.currentTab = 1
                 }
                     
             }.edgesIgnoringSafeArea(.all)

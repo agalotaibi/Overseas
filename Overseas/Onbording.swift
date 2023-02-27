@@ -23,7 +23,7 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["","Saudi Arabia","Kawait"]
+    var nationality = ["","Saudi Arabia"]
     @State private var selectedNationality = ""
     
    

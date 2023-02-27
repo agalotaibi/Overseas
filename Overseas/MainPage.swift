@@ -516,7 +516,7 @@ struct MainPage: View {
                                         Button(
                                             action: {
                                                 let telephone = "tel://"
-                                                let formattedString = telephone + embassy
+                                                let formattedString = telephone + (cont.embassy ?? "") ?? ""
                                                 guard let url = URL(string: formattedString) else { return }
                                                 UIApplication.shared.open(url)
                                             },
@@ -543,7 +543,7 @@ struct MainPage: View {
                                         Button(
                                             action: {
                                                 let telephone = "tel://"
-                                                let formattedString = telephone + qunsl
+                                                let formattedString = telephone + (cont.qunsl ?? "" ) ?? ""
                                                 guard let url = URL(string: formattedString) else { return }
                                                 UIApplication.shared.open(url)
                                             },

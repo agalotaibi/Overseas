@@ -52,18 +52,28 @@ struct addCity: View {
                                 
                                 ZStack (alignment: .leading){
                                     
-                                    ForEach(emer2) { emere  in
-                                        
-                                     //   if emere.Country == cont.contry ?? ""{
-                                            
-                                            emere.bannerImage2.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 330, height: 90)
+                                    Image("earth")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 330, height: 90)
+                                        .cornerRadius(18)
+                                        .overlay( Rectangle()
+                                            .foregroundColor(.black)
                                             .cornerRadius(18)
-                                            .brightness(-0.1)
-                                                
-                                            
-                                        }
+                                            .opacity(0.1))
+                                    
+//                                    ForEach(emer2) { emere  in
+//
+//                                     //   if emere.Country == cont.contry ?? ""{
+//
+//                                            emere.bannerImage2.resizable()
+//                                            .aspectRatio(contentMode: .fill)
+//                                            .frame(width: 330, height: 90)
+//                                            .cornerRadius(18)
+//                                            .brightness(-0.1)
+//
+//
+//                                        }
                                     
             //                        Image(cityPic)
             //                            .resizable()
@@ -356,15 +366,15 @@ struct city: View {
                                 
                             }
                         
-//                        Image(cityPic)
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                            .frame(width: 330, height: 90)
-//                            .cornerRadius(18)
-//                            .overlay( Rectangle()
-//                                .foregroundColor(.black)
-//                                .cornerRadius(18)
-//                                .opacity(0.1))
+                        Image(cityPic)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 330, height: 90)
+                            .cornerRadius(18)
+                            .overlay( Rectangle()
+                                .foregroundColor(.black)
+                                .cornerRadius(18)
+                                .opacity(0.1))
                         
                         
                         Text(cityName)

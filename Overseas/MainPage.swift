@@ -359,16 +359,17 @@ struct MainPage: View {
                     
                     ZStack (alignment: .leading){
              
-                        ForEach(emer2) { emere  in
-                            
-                         //   if emere.Country == cont.contry ?? ""{
-                                
-                                emere.bannerImage2.resizable().scaledToFill()
-                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
-                                
-                            }
+//                        ForEach(emer2) { emere  in
+//
+//                         //   if emere.Country == cont.contry ?? ""{
+//
+//                                emere.bannerImage2.resizable().scaledToFill()
+//                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+//
+//                            }
                       //  }
-
+                        Image("earth").resizable().scaledToFill()
+                            .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
                         
                         
                         VStack{

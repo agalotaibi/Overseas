@@ -23,7 +23,7 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["","Saudi Arabia"]
+    var nationality = ["Saudi Arabia"]
     @State private var selectedNationality = ""
     
    
@@ -39,7 +39,7 @@ struct Onbording: View {
             //  VStack {
             TabView(selection: $selectedTab){
                 
-                //------------- 1 onbording page ------------
+                //------------ 1 onbording page ------------
                 
                 VStack(){
                     
@@ -60,7 +60,7 @@ struct Onbording: View {
                         .frame(maxWidth: 300, alignment: .leading)
                         .padding(.bottom)
                     
-                    Text("Overseas assist you in reaching Authorities and Emergency services, everywhere")
+                    Text("Overseas assist you in reaching authorities and emergency services, everywhere")
                         .font(.system(size: 24))
                         .foregroundColor(Color("ourGray"))
                         .frame(maxWidth: 300, alignment: .leading)
@@ -71,6 +71,7 @@ struct Onbording: View {
                 //------------- 2 onbording page ------------
                 
                 VStack (){
+                   Spacer()
                     Spacer()
                     Image(systemName: "person.text.rectangle")
                         .resizable()
@@ -79,7 +80,7 @@ struct Onbording: View {
                         .frame(width: 200)
                         .padding()
                     
-                    Spacer()
+                   // Spacer()
                     
                     Text("Please Select")
                         .font(.system(size: 40))
@@ -89,17 +90,35 @@ struct Onbording: View {
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .frame(maxWidth: 300, alignment: .leading)
-                        .padding(.bottom)
+                       // .padding(.bottom)
                     
-                    Spacer()
+                    //Spacer()
                     VStack {
-                        Text("You selected: \(vm.nationality)").padding().background(Color("yellow")).cornerRadius(40)
+                    
                         Picker("Please choose a color", selection: $vm.nationality) {
                             ForEach(nationality, id: \.self) {
                                 Text($0)
                             }
                         }.pickerStyle(WheelPickerStyle())
+                       
+                         //Divider()
+                        //.frame(width: 200)
                         
+                        /*this is the old yellow button for you selected .
+                        Text("You selected: \(vm.nationality)").bold().padding()
+                        .background(Color("Yellow")).cornerRadius(40)
+                       */
+                        
+                        /*-------------
+                         the correct You selected line
+                         ------------*/
+                        /*
+                        HStack{
+                            Text("You selected:").bold()
+                            Text(" \(vm.nationality)")
+                        }
+                         */
+                       
                     }
                   
                     Spacer()
@@ -116,11 +135,26 @@ struct Onbording: View {
                         .foregroundColor(Color("darkBlue"))
                         .frame(width: 150)
                         .padding().padding(.bottom)
-                    Text("Please Allow ")
+                    
+                    Text("No Location")
+                        .font(.system(size: 40))
+                        .frame(maxWidth: 300, alignment: .leading)
+                        .fontWeight(.bold)
+                    Text("Tracking")
+                        .font(.system(size: 40))
+                        .frame(maxWidth: 300, alignment: .leading)
+                        .padding(.bottom)
+                    
+                    
+                    Text("Overseas will not track you, it will take your region from your device.")
+                        .font(.system(size: 24))
+                        .foregroundColor(Color("ourGray"))
+                        .frame(maxWidth: 300, alignment: .leading)
+                    /*Text("Please Allow ")
                         .font(.system(size: 40))
                         .frame(maxWidth: 300, alignment: .leading)
                     
-                    Text("Access location")
+                    Text("Access Location")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .frame(maxWidth: 300, alignment: .leading)
@@ -129,14 +163,15 @@ struct Onbording: View {
                     Text("Allow the app to get your current locathion to provide you with the best user experince")
                         .font(.system(size: 24))
                         .foregroundColor(Color("ourGray"))
-                        .frame(maxWidth: 300, alignment: .leading)
+                        .frame(maxWidth: 300, alignment: .leading)*/
                     
 //                    Spacer()
                         
                     
                     VStack{
+                        /*
                                             //------------------------------
-                                            LocationButton(.shareCurrentLocation){
+                                           LocationButton(.shareCurrentLocation){
                                                 locationManager.requestLocation()
                                                 if let location = locationManager.location {
                                                     print("longitude: ",location.longitude)
@@ -154,9 +189,11 @@ struct Onbording: View {
                                                 }
                                             }//------------------------------
                                             .cornerRadius(30)
-                                            .tint(Color("yellow"))
-                                            .foregroundColor(Color("darkBlue"))
-                                            .padding()
+                                           .tint(Color("Yellow"))
+                                           .foregroundColor(Color("darkBlue"))
+                                          */
+                        
+                                          //  .padding()
                     
                     Button(action: {
                         
@@ -169,14 +206,15 @@ struct Onbording: View {
                         Image(systemName: "arrow.forward.circle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("yellow"))
+                            .foregroundColor(Color("Yellow"))
                             .frame(width: 50)
+                           // .padding(.top)
                         
                     })
  
                 }
                   
-                    .padding()
+                   .padding()
                     
                 } .tag(3)
                 

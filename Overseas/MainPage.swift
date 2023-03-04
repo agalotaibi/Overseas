@@ -56,7 +56,11 @@ struct MainPage: View {
                         ForEach(emer) { emere  in
                             
                             emere.bannerImage.resizable().scaledToFill()
-                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
+                                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.2),
+                                                                               .black.opacity(0.1),
+                                                                               .black.opacity(0.0),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                                )).padding(.top, -45.0)
                             
                         }
                         //--------------------------------------- Title
@@ -366,7 +370,11 @@ struct MainPage: View {
                        
 
                                 emere.bannerImage2.resizable().scaledToFill()
-                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
+                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
+                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.2),
+                                                                                   .black.opacity(0.1),
+                                                                                   .black.opacity(0.0),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                                    )).padding(.top, -45.0)
 
                          
                         }
@@ -398,164 +406,161 @@ struct MainPage: View {
                             {
                                 
                                 List{
-                                    //---------------------------------------------------- police
-                                    VStack(alignment: .leading) {
-                                        Text("Emergency Numbers")
-                                            .font(.body)
-                                            .fontWeight(.semibold)
-                                        
-                                    }
-                                    HStack(alignment: .center){
-                                        Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                                        VStack(alignment: .leading) {
-                                            Text("Police")
-                                            Text(String(cont.police))
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                        }
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(cont.police)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //---------------------------------------------------- ambulance
-                                    HStack(alignment: .center){
-                                        Image("ambl")
-                                            .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                                        VStack(alignment: .leading) {
-                                            Text("Ambulance")
-                                            Text(String(cont.ambulance))
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                        }
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(cont.ambulance)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //---------------------------------------------------- FireStation
-                                    HStack(alignment: .center){
-                                        Image("fire1")
-                                            .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                                        VStack(alignment: .leading) {
-                                            Text("Fire Station")
-                                            Text(String(cont.fire))
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                        }
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + String(cont.fire)
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //--------------------------------------- First list style
-                                }
-                                .scrollContentBackground(.hidden)
-                                .opacity(0.7)
-                                .foregroundColor(Color.black)
-                                .font(.system(size: 21))
-                            }
-                            
-                            
-                            VStack
-                            {
-                                
-                                
-                                List{
-                                    //---------------------------------------------------- embaccy
                                     
-                                    VStack(alignment: .leading) {
-                                        Text("Your Country Foreign Affairs")
-                                            .font(.body)
-                                            .fontWeight(.semibold)
-                                        
-                                    }
-                                    HStack(alignment: .center){
-                                        Image("emb")
-                                            .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                                        VStack(alignment: .leading) {
-                                            Text("Embassy")
-                                            Text(cont.embassy ?? "")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
+                                    Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.white)){
+                                            //---------------------------------------------------- police
+                                            VStack(alignment: .leading) {
+                                                Text("Emergency Numbers")
+                                                    .font(.body)
+                                                    .fontWeight(.semibold)
+                                                
+                                            }
+                                            HStack(alignment: .center){
+                                                Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                VStack(alignment: .leading) {
+                                                    Text("Police")
+                                                    Text(String(cont.police))
+                                                        .foregroundColor(Color.gray)
+                                                        .font(.footnote)
+                                                }
+                                                Spacer()
+                                                Button(
+                                                    action: {
+                                                        let telephone = "tel://"
+                                                        let formattedString = telephone + String(cont.police)
+                                                        guard let url = URL(string: formattedString) else { return }
+                                                        UIApplication.shared.open(url)
+                                                    },
+                                                    label: {
+                                                        Image(systemName: "phone.circle.fill")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 40.0)
+                                                            .foregroundColor(Color.green)
+                                                    })
+                                            }
+                                            //---------------------------------------------------- ambulance
+                                            HStack(alignment: .center){
+                                                Image("ambl")
+                                                    .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                VStack(alignment: .leading) {
+                                                    Text("Ambulance")
+                                                    Text(String(cont.ambulance))
+                                                        .foregroundColor(Color.gray)
+                                                        .font(.footnote)
+                                                }
+                                                Spacer()
+                                                Button(
+                                                    action: {
+                                                        let telephone = "tel://"
+                                                        let formattedString = telephone + String(cont.ambulance)
+                                                        guard let url = URL(string: formattedString) else { return }
+                                                        UIApplication.shared.open(url)
+                                                    },
+                                                    label: {
+                                                        Image(systemName: "phone.circle.fill")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 40.0)
+                                                            .foregroundColor(Color.green)
+                                                    })
+                                            }
+                                            //---------------------------------------------------- FireStation
+                                            HStack(alignment: .center){
+                                                Image("fire1")
+                                                    .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                VStack(alignment: .leading) {
+                                                    Text("Fire Station")
+                                                    Text(String(cont.fire))
+                                                        .foregroundColor(Color.gray)
+                                                        .font(.footnote)
+                                                }
+                                                Spacer()
+                                                Button(
+                                                    action: {
+                                                        let telephone = "tel://"
+                                                        let formattedString = telephone + String(cont.fire)
+                                                        guard let url = URL(string: formattedString) else { return }
+                                                        UIApplication.shared.open(url)
+                                                    },
+                                                    label: {
+                                                        Image(systemName: "phone.circle.fill")
+                                                            .resizable()
+                                                            .scaledToFit()
+                                                            .frame(width: 40.0)
+                                                            .foregroundColor(Color.green)
+                                                    })
+                                            }
+                                            //--------------------------------------- First list style
                                         }
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + (cont.embassy ?? "") ?? ""
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //---------------------------------------------------- embaccy
-                                    HStack(alignment: .center){
-                                        Image("quns")
-                                            .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                                        VStack (alignment: .leading){
-                                            Text("Citizen Affairs")
-                                            Text(cont.qunsl ?? "")
-                                                .foregroundColor(Color.gray)
-                                                .font(.footnote)
-                                        }
+                                    
+                                    
+                                    
+                                    
+                                    
                                         
-                                        Spacer()
-                                        Button(
-                                            action: {
-                                                let telephone = "tel://"
-                                                let formattedString = telephone + (cont.qunsl ?? "" ) ?? ""
-                                                guard let url = URL(string: formattedString) else { return }
-                                                UIApplication.shared.open(url)
-                                            },
-                                            label: {
-                                                Image(systemName: "phone.circle.fill")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 40.0)
-                                                    .foregroundColor(Color.green)
-                                            })
-                                    }
-                                    //--------------------------------------- Second list style
+                                        
+                                        Section(header: Text("\(vm.nationality) Foreign Affairs").fontWeight(.bold).foregroundColor(Color.white)){
+                                                
+
+                                                HStack(alignment: .center){
+                                                    Image("emb")
+                                                        .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                    VStack(alignment: .leading) {
+                                                        Text("Embassy")
+                                                        Text(cont.embassy ?? "")
+                                                            .foregroundColor(Color.gray)
+                                                            .font(.footnote)
+                                                    }
+                                                    Spacer()
+                                                    Button(
+                                                        action: {
+                                                            let telephone = "tel://"
+                                                            let formattedString = telephone + (cont.embassy ?? "") ?? ""
+                                                            guard let url = URL(string: formattedString) else { return }
+                                                            UIApplication.shared.open(url)
+                                                        },
+                                                        label: {
+                                                            Image(systemName: "phone.circle.fill")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(width: 40.0)
+                                                                .foregroundColor(Color.green)
+                                                        })
+                                                }
+                                                //---------------------------------------------------- embaccy
+                                                HStack(alignment: .center){
+                                                    Image("quns")
+                                                        .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                                                    VStack (alignment: .leading){
+                                                        Text("Citizen Affairs")
+                                                        Text(cont.qunsl ?? "")
+                                                            .foregroundColor(Color.gray)
+                                                            .font(.footnote)
+                                                    }
+                                                    
+                                                    Spacer()
+                                                    Button(
+                                                        action: {
+                                                            let telephone = "tel://"
+                                                            let formattedString = telephone + (cont.qunsl ?? "" ) ?? ""
+                                                            guard let url = URL(string: formattedString) else { return }
+                                                            UIApplication.shared.open(url)
+                                                        },
+                                                        label: {
+                                                            Image(systemName: "phone.circle.fill")
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .frame(width: 40.0)
+                                                                .foregroundColor(Color.green)
+                                                        })
+                                                }
+                                                //--------------------------------------- Second list
+                                                
+                                            }
+                                    
                                 }
                                 .scrollContentBackground(.hidden)
                                 .opacity(0.7)

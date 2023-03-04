@@ -57,9 +57,9 @@ struct MainPage: View {
                             
                             emere.bannerImage.resizable().scaledToFill()
                                 .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.2),
-                                                                               .black.opacity(0.1),
-                                                                               .black.opacity(0.0),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
+                                                                               .black.opacity(0.2),
+                                                                               .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
                                 )).padding(.top, -45.0)
                             
                         }
@@ -371,9 +371,9 @@ struct MainPage: View {
 
                                 emere.bannerImage2.resizable().scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.3), .black.opacity(0.2),
-                                                                                   .black.opacity(0.1),
-                                                                                   .black.opacity(0.0),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
+                                                                                   .black.opacity(0.2),
+                                                                                   .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
                                     )).padding(.top, -45.0)
 
                          
@@ -531,6 +531,11 @@ struct MainPage: View {
                                                         })
                                                 }
                                                 //---------------------------------------------------- embaccy
+                                            
+                                            if ((cont.qunsl?.isEmpty) != nil){
+                                                
+                                            }
+                                            else{
                                                 HStack(alignment: .center){
                                                     Image("quns")
                                                         .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
@@ -557,8 +562,9 @@ struct MainPage: View {
                                                                 .foregroundColor(Color.green)
                                                         })
                                                 }
-                                                //--------------------------------------- Second list
-                                                
+                                                //----------------------------
+                                         
+                                            }
                                             }
                                     
                                 }
@@ -579,9 +585,9 @@ struct MainPage: View {
                     
                 }
                     
-            }.edgesIgnoringSafeArea(.all)
+            }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all)
                 
-        }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).preferredColorScheme(.light).onAppear{
+        }.onAppear{
         
 
             fetchEvent()
@@ -592,7 +598,7 @@ struct MainPage: View {
             }
         }.fullScreenCover(isPresented: $shouldshowonb ){
             Onbording(shouldshowonb: $shouldshowonb)
-             }
+             }.preferredColorScheme(.light)//.edgesIgnoringSafeArea(.all)
 
     }
 
@@ -1014,5 +1020,6 @@ struct allCity: View {
         
     }
     }
+
 
 

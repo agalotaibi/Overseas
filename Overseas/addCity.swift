@@ -283,10 +283,10 @@ struct addCity: View {
                     let vis = SavedCountry(context: viewContext)
                     vis.embassy = embss.Embasy_n
                     vis.qunsl = embss.Consulate_no
-                    vis.fire = Int16(Fire) ?? 0
-                    vis.ambulance =  Int16(Ambulance) ?? 0
+                    vis.fire = Int64(Fire) ?? 0
+                    vis.ambulance =  Int64(Ambulance) ?? 0
                     vis.contry = loca
-                    vis.police =  Int16(police) ?? 0
+                    vis.police =  Int64(police) ?? 0
                     
                 }
                 

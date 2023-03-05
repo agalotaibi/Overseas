@@ -95,7 +95,7 @@ struct firstMain: View {
                                                 Image("police1")
                                                     .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                                                 VStack(alignment: .leading) {
-                                                    Text("police")
+                                                    Text("Police")
                                                     Text("\(emere.Police)")
                                                         .foregroundColor(Color.gray)
                                                         .font(.footnote)

@@ -63,8 +63,8 @@ struct MainPage: View {
                                 
                                 emere.bannerImage2.resizable().scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
-                                                                                   .black.opacity(0.2),
+                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.7), .black.opacity(0.5),
+                                                                                   .black.opacity(0.3),
                                                                                    .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
                                     )).padding(.top, -45.0)
                                 
@@ -100,6 +100,7 @@ struct MainPage: View {
                                     List{
                                         
                                         Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
+                                            .font(.body)
                                             .fontWeight(.bold)
                                             .foregroundColor(Color.white)){
                                               
@@ -115,7 +116,7 @@ struct MainPage: View {
                                         
                                         
                                         
-                                        Section(header: Text("\(vm.nationality) Foreign Affairs").fontWeight(.bold).foregroundColor(Color.white)){
+                                        Section(header: Text("\(vm.nationality) Foreign Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
                                             
                                             affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
                                             
@@ -123,9 +124,9 @@ struct MainPage: View {
                                                 .listRowBackground(Color.white)
                                         }
                                         
-                                    }.listRowBackground(Color.white)
+                                    }
                                         .scrollContentBackground(.hidden)
-                                        .opacity(0.7)
+                                        .opacity(0.8)
                                         .foregroundColor(Color.black)
                                         .font(.system(size: 19))
                                 }

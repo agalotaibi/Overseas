@@ -126,7 +126,7 @@ struct addCity: View {
                                 } label: {
                                     Image(systemName: "trash")
                                 }
-                            }
+                            }.listRowBackground(Color.clear)
                         }
                         
                         

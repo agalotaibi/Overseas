@@ -21,39 +21,37 @@ struct secondMain: View {
     
     var body: some View {
         VStack{
-            ForEach(events){ cont in
-                ZStack (alignment: .leading){
-                    let item = emer2.filter { $0.Country == cont.contry ?? ""}
-                    ForEach(item) { emere  in
+            NavigationView {
+                ForEach(events){ cont in
+                    ZStack (alignment: .leading){
+                        let item = emer2.filter { $0.Country == cont.contry ?? ""}
+                        ForEach(item) { emere  in
+                            
+                            emere.bannerImage2.resizable().scaledToFill()
+                                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
+                                    LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
+                                                                               .black.opacity(0.2),
+                                                                               .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                                )).ignoresSafeArea(.all)
+                            
+                        }
                         
-                        emere.bannerImage2.resizable().scaledToFill()
-                            .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
-                                                                           .black.opacity(0.2),
-                                                                           .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
-                            )).ignoresSafeArea(.all)
-                        
-                    }
-                    
-                    VStack{
-                        NavigationLink(destination: addCity(),
-                                       label: {
-                            Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
-                                .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 270,  alignment: .trailing).foregroundColor(Color.white)
-                        })
-                        
-                        
+                        VStack{
+                            NavigationLink(destination: addCity(),
+                                           label: {
+                                Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
+                                    .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 270,  alignment: .trailing).foregroundColor(Color.white)
+                            })
+                            
+                            
                             Text(cont.contry ?? "")
                                 .multilineTextAlignment(.center).padding(.top, -100.0).foregroundColor(Color.white)
                                 .bold()
                                 .font(.custom("", fixedSize: 50))
                                 .listRowBackground(Color.white)
-                        
-                        
-                        
-                        
-                        VStack
-                        {
+                            
+                            
+                            
                             
                             List{
                                 
@@ -82,14 +80,15 @@ struct secondMain: View {
                             .opacity(0.7)
                             .foregroundColor(Color.black)
                             .font(.system(size: 19))
+                            
+                            
+                            
                         }.padding(.top, -50.0)
-                        
-                        
                     }
+                    
+                    
+                    
                 }
-                
-                
-                
             }
         }.onAppear(){
             fetchEvent()
@@ -126,21 +125,21 @@ struct secondMain: View {
             case .success(let record):
                 let event = Numb(record: record)
                 emer.append(event)
-               
+                
             case .failure(let error):
                 print("Error:\(error.localizedDescription)")
             }
         }
         
         CKContainer.default().publicCloudDatabase.add(operation)
-
+        
     }
     
     func fetchImage(){
         
         emer2.removeAll()
         
-      
+        
         
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType:"Emergency", predicate: predicate)
@@ -151,9 +150,9 @@ struct secondMain: View {
             case .success(let record):
                 let event = Numb2(record: record)
                 emer2.append(event)
-//                let newItems = emer2.filter { $0.Country == "Cuba" }
-//                print("😈😈",newItems)
-               
+                //                let newItems = emer2.filter { $0.Country == "Cuba" }
+                //                print("😈😈",newItems)
+                
             case .failure(let error):
                 print("Error:\(error.localizedDescription)")
             }
@@ -161,13 +160,13 @@ struct secondMain: View {
         
         CKContainer.default().publicCloudDatabase.add(operation)
         
-
+        
     }
     
-//
+    //
     
     func fetchEvent2(National: String){
-       
+        
         
         emb.removeAll()
         
@@ -176,7 +175,7 @@ struct secondMain: View {
         let predicate = NSPredicate(
             format: "Nationality == %@ && Country == %@",
             National,loca)
-
+        
         let query = CKQuery(recordType:"Country", predicate: predicate)
         let operation = CKQueryOperation(query: query)
         operation.recordMatchedBlock = {recordID, result in
@@ -188,15 +187,15 @@ struct secondMain: View {
                 print("Error:\(error.localizedDescription)")
             }
         }
-
+        
         CKContainer.default().publicCloudDatabase.add(operation)
         
-      
-
+        
+        
     }
 }
 
-    
+
 
 
 struct secondMain_Previews: PreviewProvider {

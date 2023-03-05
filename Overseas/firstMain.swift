@@ -28,9 +28,9 @@ struct firstMain: View {
                     
                     emere.bannerImage.resizable().scaledToFill()
                         .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                            LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
-                                                                       .black.opacity(0.2),
-                                                                       .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                            LinearGradient(gradient: Gradient(colors: [.black.opacity(0.7), .black.opacity(0.5),
+                                                                       .black.opacity(0.3),
+                                                                       .black.opacity(0.3),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
                         )).ignoresSafeArea(.all)
                     
                 }
@@ -54,8 +54,9 @@ struct firstMain: View {
                             ForEach(emer) { emere  in
                                 
                                 Section(header: Text("\(emere.Country) Emergency Numbers")
+                                    .font(.body)
                                     .fontWeight(.bold)
-                                    .foregroundColor(Color.white)){
+                                    .foregroundColor(Color.white).opacity(1.0)){
                                         
                                         if emere.Police == emere.Ambulance {
                                             HStack(alignment: .center){
@@ -182,8 +183,9 @@ struct firstMain: View {
                                     let emb2 = embe.Embasy_n.split(separator: "/")
                                     
                                     Section(header: Text("\(vm.nationality) Foreign Affairs")
+                                        .font(.body)
                                         .fontWeight(.bold)
-                                        .foregroundColor(Color.white)){
+                                        .foregroundColor(Color.white).opacity(1.0)){
                                             
                                             if emb2.isEmpty {
                                                 

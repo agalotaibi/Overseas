@@ -14,11 +14,15 @@
 		31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420EC9298A6E1400EFD4C2 /* Onbording.swift */; };
 		31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECB298A6E2600EFD4C2 /* MainPage.swift */; };
 		31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECD298A6E3800EFD4C2 /* addCity.swift */; };
+		316ABCAB29B4EA4500BC1BCC /* secondMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ABCAA29B4EA4500BC1BCC /* secondMain.swift */; };
+		316ABCAD29B4EE0800BC1BCC /* firstMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ABCAC29B4EE0800BC1BCC /* firstMain.swift */; };
 		31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B4AF7029A4ED3000526086 /* Saved.xcdatamodeld */; };
 		31B4AF7429A4ED9100526086 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4AF7329A4ED9100526086 /* Persistence.swift */; };
 		31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E0298BEBF900130841 /* Nationality.swift */; };
 		31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E2298BEC0B00130841 /* Notification.swift */; };
 		31DE01C329B4D09400EDCDA9 /* allinitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE01C229B4D09400EDCDA9 /* allinitals.swift */; };
+		31EF3CC229B5096800DA487B /* EmergancyOffline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF3CC129B5096800DA487B /* EmergancyOffline.swift */; };
+		31EF3CC429B50A0000DA487B /* affairsOffline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EF3CC329B50A0000DA487B /* affairsOffline.swift */; };
 		719B91EB299919C800A09E8B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B91EA299919C800A09E8B /* LocationManager.swift */; };
 		E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE30C329A4E501008A2A93 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -33,11 +37,15 @@
 		31420EC9298A6E1400EFD4C2 /* Onbording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onbording.swift; sourceTree = "<group>"; };
 		31420ECB298A6E2600EFD4C2 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		31420ECD298A6E3800EFD4C2 /* addCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCity.swift; sourceTree = "<group>"; };
+		316ABCAA29B4EA4500BC1BCC /* secondMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondMain.swift; sourceTree = "<group>"; };
+		316ABCAC29B4EE0800BC1BCC /* firstMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstMain.swift; sourceTree = "<group>"; };
 		31B4AF7129A4ED3000526086 /* Saved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Saved.xcdatamodel; sourceTree = "<group>"; };
 		31B4AF7329A4ED9100526086 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		31D4A8E0298BEBF900130841 /* Nationality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nationality.swift; sourceTree = "<group>"; };
 		31D4A8E2298BEC0B00130841 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		31DE01C229B4D09400EDCDA9 /* allinitals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allinitals.swift; sourceTree = "<group>"; };
+		31EF3CC129B5096800DA487B /* EmergancyOffline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergancyOffline.swift; sourceTree = "<group>"; };
+		31EF3CC329B50A0000DA487B /* affairsOffline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = affairsOffline.swift; sourceTree = "<group>"; };
 		719B91EA299919C800A09E8B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E9BE30C329A4E501008A2A93 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +86,10 @@
 				31420EBA298A6D6400EFD4C2 /* OverseasApp.swift */,
 				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
 				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
+				316ABCAC29B4EE0800BC1BCC /* firstMain.swift */,
+				316ABCAA29B4EA4500BC1BCC /* secondMain.swift */,
+				31EF3CC329B50A0000DA487B /* affairsOffline.swift */,
+				31EF3CC129B5096800DA487B /* EmergancyOffline.swift */,
 				31DE01C229B4D09400EDCDA9 /* allinitals.swift */,
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
 				31D4A8E0298BEBF900130841 /* Nationality.swift */,
@@ -173,13 +185,17 @@
 				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
 				31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */,
 				E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */,
+				316ABCAB29B4EA4500BC1BCC /* secondMain.swift in Sources */,
 				31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */,
 				31420EBB298A6D6400EFD4C2 /* OverseasApp.swift in Sources */,
+				316ABCAD29B4EE0800BC1BCC /* firstMain.swift in Sources */,
 				31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */,
+				31EF3CC229B5096800DA487B /* EmergancyOffline.swift in Sources */,
 				719B91EB299919C800A09E8B /* LocationManager.swift in Sources */,
 				31DE01C329B4D09400EDCDA9 /* allinitals.swift in Sources */,
 				31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */,
 				31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */,
+				31EF3CC429B50A0000DA487B /* affairsOffline.swift in Sources */,
 				31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

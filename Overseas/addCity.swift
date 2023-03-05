@@ -11,7 +11,6 @@ import CloudKit
 struct addCity: View {
     
     @EnvironmentObject var vm : ViewModel
-    
     @State private var searchText = ""
     @State private var locaiton = ""
     @State private var showingNatio = false
@@ -349,87 +348,9 @@ struct addCity_Previews: PreviewProvider {
 }
 
 
-struct city: View {
-    
-    @State var cityPic = "earth"
-    @State var cityName = ""
-    @State private var country = ""
-    @State var em :[Emergency] = []
-    @State var emer2 :[Numb2] = []
-    //@FetchRequest(sortDescriptors: []) var countries: FetchedResults <CountryList>
-    @Environment(\.managedObjectContext) var moc
-    
-    
-    var body: some View {
-        
-        
-        ZStack (alignment: .leading){
-            
-            ForEach(emer2) { emere  in
-                
-                //   if emere.Country == cont.contry ?? ""{
-                
-                emere.bannerImage2.resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 330, height: 90)
-                    .cornerRadius(18)
-                    .brightness(-0.2)
-                
-                
-            }
-            
-            Image(cityPic)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 330, height: 90)
-                .cornerRadius(18)
-                .overlay( Rectangle()
-                    .foregroundColor(.black)
-                    .cornerRadius(18)
-                    .opacity(0.1))
-            
-            
-            Text(cityName)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .bold()
-                .fontWeight(.black)
-                .foregroundColor(.white)
-                .padding()
-            
-            
-        }.padding(.horizontal,40)
-        
-        
-    }
-}
 
 
-struct Emergency: Identifiable{
-    let record: CKRecord
-    let Country: String
-    let Ambulance: Int
-    let Fire: Int
-    let Police: Int
-    let Image2: CKAsset?
-    
-    let id: CKRecord.ID
-    
-    init(record: CKRecord){
-        self.record = record
-        self.id = record.recordID
-        self.Country = record["Country"] as? String ?? ""
-        self.Ambulance = record["Ambulance"] as? Int ?? 0
-        self.Fire = record["Fire"] as? Int ?? 0
-        self.Police = record["Police"] as? Int ?? 0
-        self.Image2 = record["Image"] as? CKAsset
-        
-    }
-    
-    
-    
-    
-}
+
 
 
 

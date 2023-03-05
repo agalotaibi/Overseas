@@ -13,7 +13,6 @@ import Foundation
 struct MainPage: View {
     
     @EnvironmentObject var vm : ViewModel
-    
     @State var emer :[Numb] = []
     @State var emer2 :[Numb2] = []
     @State var emb :[Emb] = []
@@ -26,21 +25,16 @@ struct MainPage: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [])
     private var events: FetchedResults<SavedCountry>
-
     @State var cityPic = "earth"
     @State var cityName = "France"
     @State var police = 0
     @State var amblance = 0
     @State var fire = 0
-    //@State var em :[Emergency] = []
     @State private var embassy = ""
     @State private var nation = ""
     @State private var qunsl = ""
     @State private var vistedcont = ""
     let numberString = "111-222-3334" //change
-    
-    
-    
     @AppStorage("onbording")  var shouldshowonb = true
     
 
@@ -704,22 +698,7 @@ struct MainPage: View {
 }
 
 
-struct GrowingButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 29))
-            .clipShape(Circle())
-            .padding(.leading, 290.0)
-            .padding(.bottom, 700)
-            .scaleEffect(configuration.isPressed ? 1.2 : 1)
-            .animation(.easeOut(duration: 0.5), value: configuration.isPressed)
-    }
-}
-//------------------------------------------ custom color
-struct CustomColor {
-    // static let Text = Color("Text")
-    // Add more here...
-}
+
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
@@ -729,297 +708,4 @@ struct MainPage_Previews: PreviewProvider {
 
     }
 }
-
-
-struct Numb: Identifiable{
-    let record: CKRecord
-    let Ambulance: Int
-    let Country: String
-    let Fire: Int
-    let Police: Int
-    let Image2: CKAsset?
-    let id: CKRecord.ID
-    
-    
-    init(record: CKRecord){
-        self.record = record
-        self.id = record.recordID
-        self.Ambulance = record["Ambulance"] as? Int ?? 0
-        self.Country = record["Country"] as? String ?? ""
-        self.Fire = record["Fire"] as? Int ?? 0
-        self.Image2 = record["Image"] as? CKAsset
-        self.Police = record["Police"] as? Int ?? 0
-        
-        
-    }
-    
-    
-    var bannerImage : Image{
-        guard let fileURL = Image2?.fileURL else {return Image("earth")}
-        let data = try! Data(contentsOf: fileURL)
-        guard let uiImage = UIImage(data: data) else { return Image("earth") }
-        let image = Image(uiImage: uiImage)
-        return image
-//        Image(uiImage: UIImage(named: "earth")!)
-
-    }
-}
-
-struct Numb2: Identifiable{
-    let record: CKRecord
-    let Image2: CKAsset?
-    let Country: String
-    let id: CKRecord.ID
-    
-    
-    init(record: CKRecord){
-        self.record = record
-        self.id = record.recordID
-        self.Country = record["Country"] as? String ?? ""
-        self.Image2 = record["Image"] as? CKAsset
-        
-    }
-    
-    
-    var bannerImage2 : Image {
-        guard let fileURL = Image2?.fileURL else {return Image("earth")}
-        let data = try! Data(contentsOf: fileURL)
-        guard let uiImage = UIImage(data: data) else { return Image("earth") }
-        let image = Image(uiImage: uiImage)
-        return image
-
-    }
-}
-
-
-
-
-struct Emb: Identifiable{
-    let record: CKRecord
-    let Consulate_no: String
-    let Country: String
-    let Embasy_n: String
-    let Nationality: String
-    let id: CKRecord.ID
-
-    init(record: CKRecord){
-        self.record = record
-        self.id = record.recordID
-        self.Consulate_no = record["Consulate_no"] as? String ?? ""
-        self.Country = record["Country"] as? String ?? ""
-        self.Embasy_n = record["Embasy_n"] as? String ?? ""
-        self.Nationality = record["Nationality"] as? String ?? ""
-        
-
-    }
-
-
-
-}
-
-struct allCity: View {
-
-    @State var cityPic = "earth"
-    @State var cityName = "France"
-    @State var police = 0
-    @State var amblance = 0
-    @State var fire = 0
-    @State var em :[Emergency] = []
-    @State var emer :[Numb] = []
-    @State private var embassy = ""
-    @State private var nation = ""
-    @State private var qunsl = ""
-    @State private var vistedcont = ""
-    let numberString = "111-222-3334" //change
-
-    var body: some View {
-        
-        
-        ZStack (alignment: .leading){
-            
-            Image(cityPic).resizable().scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).brightness(-0.2)
-            
-            
-            VStack{
-                NavigationLink(destination: addCity(),
-                               label: {
-                    Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 100,  alignment: .trailing).foregroundColor(Color.white)
-                    
-                    
-                })
-  
-                
-                VStack {
-                    Text(cityName)
-                    
-                }
-                .foregroundColor(Color.white)
-                .bold()
-                .font(.custom("", fixedSize: 50))
-                .listRowBackground(Color.white)
-                
-                
-                VStack
-                {
-                    List{
-                        //---------------------------------------------------- police
-                        HStack(alignment: .center){
-                            Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                            VStack(alignment: .leading) {
-                                Text("Police")
-                                Text(String(police))
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            Button(
-                                action: {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + String(police)
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
-                                },
-                                label: {
-                                    Image(systemName: "phone.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40.0)
-                                        .foregroundColor(Color.green)
-                                })
-                        }
-                        //---------------------------------------------------- ambulance
-                        HStack(alignment: .center){
-                            Image("ambl")
-                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                            VStack(alignment: .leading) {
-                                Text("Ambulance")
-                                Text(String(amblance))
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            Button(
-                                action: {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + String(amblance)
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
-                                },
-                                label: {
-                                    Image(systemName: "phone.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40.0)
-                                        .foregroundColor(Color.green)
-                                })
-                        }
-                        //---------------------------------------------------- FireStation
-                        HStack(alignment: .center){
-                            Image("fire1")
-                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                            VStack(alignment: .leading) {
-                                Text("Fire Station")
-                                Text(String(fire))
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            Button(
-                                action: {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + String(fire)
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
-                                },
-                                label: {
-                                    Image(systemName: "phone.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40.0)
-                                        .foregroundColor(Color.green)
-                                })
-                        }
-                        //--------------------------------------- First list style
-                    }
-                    .scrollContentBackground(.hidden)
-                    .opacity(0.7)
-                    .foregroundColor(Color.black)
-                    .font(.system(size: 21))
-                }
-                
-                
-                VStack
-                {
-                    List{
-                        //---------------------------------------------------- embaccy
-                        HStack(alignment: .center){
-                            Image("emb")
-                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                            VStack(alignment: .leading) {
-                                Text("Embassy")
-                                Text(embassy)
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                            }
-                            Spacer()
-                            Button(
-                                action: {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + embassy
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
-                                },
-                                label: {
-                                    Image(systemName: "phone.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40.0)
-                                        .foregroundColor(Color.green)
-                                })
-                        }
-                        //---------------------------------------------------- embaccy
-                        HStack(alignment: .center){
-                            Image("quns")
-                                .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
-                            VStack (alignment: .leading){
-                                Text("Consulent")
-                                Text(qunsl)
-                                    .foregroundColor(Color.gray)
-                                    .font(.footnote)
-                            }
-                            
-                            Spacer()
-                            Button(
-                                action: {
-                                    let telephone = "tel://"
-                                    let formattedString = telephone + qunsl
-                                    guard let url = URL(string: formattedString) else { return }
-                                    UIApplication.shared.open(url)
-                                },
-                                label: {
-                                    Image(systemName: "phone.circle.fill")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 40.0)
-                                        .foregroundColor(Color.green)
-                                })
-                        }
-                        //--------------------------------------- Second list style
-                    }
-                    .scrollContentBackground(.hidden)
-                    .opacity(0.7)
-                    .foregroundColor(Color.black)
-                    .font(.system(size: 19))
-                }
-                
-                
-            }
-        }
-        
-    }
-    }
-
-
 

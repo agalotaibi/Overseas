@@ -18,16 +18,18 @@ struct affairsOffline: View {
     @State var National = ""
     @State var emer :[Numb] = []
     @State var emb :[Emb] = []
+    @State var embassC = ""
+    @State var affairsC = ""
     
     var body: some View {
         
-        ForEach(events){ cont in
+        
         HStack(alignment: .center){
             Image("emb")
                 .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
             VStack(alignment: .leading) {
                 Text("Embassy")
-                Text(cont.embassy ?? "")
+                Text(embassC ?? "")
                     .foregroundColor(Color.gray)
                     .font(.footnote)
             }
@@ -35,7 +37,7 @@ struct affairsOffline: View {
             Button(
                 action: {
                     let telephone = "tel://"
-                    let formattedString = telephone + (cont.embassy ?? "") ?? ""
+                    let formattedString = telephone + (embassC ?? "") ?? ""
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 },
@@ -49,7 +51,7 @@ struct affairsOffline: View {
         }
         //---------------------------------------------------- embaccy
         
-        if ((cont.qunsl?.isEmpty) != nil){
+        if ((affairsC.isEmpty) != nil){
             
         }
             else{
@@ -58,7 +60,7 @@ struct affairsOffline: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack (alignment: .leading){
                         Text("Citizen Affairs")
-                        Text(cont.qunsl ?? "")
+                        Text(affairsC ?? "")
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -67,7 +69,7 @@ struct affairsOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + (cont.qunsl ?? "" ) ?? ""
+                            let formattedString = telephone + (affairsC ?? "" ) ?? ""
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },
@@ -81,7 +83,7 @@ struct affairsOffline: View {
                 }
                 //----------------------------
             }
-        }
+        
         
     }
 }

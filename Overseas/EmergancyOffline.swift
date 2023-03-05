@@ -12,22 +12,26 @@ import CloudKit
 struct EmergancyOffline: View {
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(sortDescriptors: [])
-    private var events: FetchedResults<SavedCountry>
+    private var emerNum: FetchedResults<SavedCountry>
     @State var emer2 :[Numb2] = []
     @EnvironmentObject var vm : ViewModel
     @State var National = ""
     @State var emer :[Numb] = []
     @State var emb :[Emb] = []
+    @State var Unified = Int64()
+    @State var ploices = Int64()
+    @State var emblances = Int64()
+    @State var firS = Int64()
+    
     var body: some View {
         
-        ForEach(events){ cont in
-            if cont.police == cont.ambulance {
+            if ploices == emblances {
                 
                 HStack(alignment: .center){
                     Image("unif").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack(alignment: .leading) {
                         Text("Unified Number")
-                        Text(String(cont.police))
+                        Text(String(Unified))
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -35,7 +39,7 @@ struct EmergancyOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + String(cont.police)
+                            let formattedString = telephone + String(Unified)
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },
@@ -54,7 +58,7 @@ struct EmergancyOffline: View {
                     Image("police1").resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack(alignment: .leading) {
                         Text("Police")
-                        Text(String(cont.police))
+                        Text(String(ploices))
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -62,7 +66,7 @@ struct EmergancyOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + String(cont.police)
+                            let formattedString = telephone + String(ploices)
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },
@@ -80,7 +84,7 @@ struct EmergancyOffline: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack(alignment: .leading) {
                         Text("Ambulance")
-                        Text(String(cont.ambulance))
+                        Text(String(emblances))
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -88,7 +92,7 @@ struct EmergancyOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + String(cont.ambulance)
+                            let formattedString = telephone + String(emblances)
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },
@@ -106,7 +110,7 @@ struct EmergancyOffline: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack(alignment: .leading) {
                         Text("Fire Station")
-                        Text(String(cont.fire))
+                        Text(String(firS))
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -114,7 +118,7 @@ struct EmergancyOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + String(cont.fire)
+                            let formattedString = telephone + String(firS)
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },
@@ -128,7 +132,7 @@ struct EmergancyOffline: View {
                 }
             } //--------------------------------------- First list style
             
-        }
+        
     }
 }
 

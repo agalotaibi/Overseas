@@ -104,9 +104,10 @@ struct MainPage: View {
                                             .foregroundColor(Color.white)){
                                               
                                                 
-                                                EmergancyOffline()
+                                                
+                                                EmergancyOffline(Unified: cont.police, ploices: cont.police, emblances: cont.ambulance, firS: cont.fire)
                                                 //--------------------------------------- First list style
-                                            }
+                                            }.listRowBackground(Color.white)
                                         
                                         
                                         
@@ -116,10 +117,10 @@ struct MainPage: View {
                                         
                                         Section(header: Text("\(vm.nationality) Foreign Affairs").fontWeight(.bold).foregroundColor(Color.white)){
                                             
-                                            affairsOffline()
+                                            affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
                                             
                                             
-                                    
+                                                .listRowBackground(Color.white)
                                         }
                                         
                                     }.listRowBackground(Color.white)

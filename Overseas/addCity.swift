@@ -186,14 +186,14 @@ struct addCity: View {
                             
                             //   let cont = SavedCountry(context: viewContext)
                             var con = emergency.Country
-                            var amb = String(emergency.Ambulance)
-                            var fire = String(emergency.Fire)
-                            var pol = String(emergency.Police)
+                            var amb = emergency.Ambulance
+                            var fire = emergency.Fire
+                            var pol = emergency.Police
                             locaiton = emergency.Country
                             
                             
                             
-                            fetchEvent2(National: vm.nationality, loca: locaiton,Fire: fire, Ambulance: amb,police: pol)
+                            fetchEvent2(National: vm.nationality, loca: locaiton,Fire: Int16(fire), Ambulance: Int16(amb),police: Int16(pol))
                             //                            for embss in emb{
                             //
                             //                                let vis = SavedCountry(context: viewContext)
@@ -259,7 +259,7 @@ struct addCity: View {
         
     }
     
-    func fetchEvent2(National: String, loca: String,Fire: String, Ambulance: String,police: String){
+    func fetchEvent2(National: String, loca: String, Fire: Int16, Ambulance: Int16, police: Int16){
         
         //
         embb.removeAll()
@@ -283,10 +283,10 @@ struct addCity: View {
                     let vis = SavedCountry(context: viewContext)
                     vis.embassy = embss.Embasy_n
                     vis.qunsl = embss.Consulate_no
-                    vis.fire = Int64(Fire) ?? 0
-                    vis.ambulance =  Int64(Ambulance) ?? 0
+                    vis.fire = Fire
+                    vis.ambulance =  Ambulance
                     vis.contry = loca
-                    vis.police =  Int64(police) ?? 0
+                    vis.police =  police
                     
                 }
                 

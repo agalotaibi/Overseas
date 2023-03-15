@@ -45,108 +45,127 @@ struct MainPage: View {
         VStack{
             
             NavigationView {
-                TabView(){
-                    
-                    firstMain().padding(.vertical, -45.0)
-                    
-                    
-                    ForEach(events){ cont in
+                
+                if events.isEmpty{
+                    EmptyState()
+                }
+                
+                else{
+                    TabView{
                         
+                        //                    VStack{
+                        //
+                        //                        NavigationLink{
+                        //                            addCity()
+                        //                        }label: {
+                        //                            Image(systemName: "plus")
+                        //                                .imageScale(.large)
+                        //                        }
+                        //
+                        //
+                        //
+                        //                    }
                         
-                        ZStack (alignment: .leading){
-                            
-                            let item = emer2.filter { $0.Country == cont.contry ?? ""}
-                            
-                            ForEach(item) { emere  in
-                                
-                                
-                                
-                                emere.bannerImage2.resizable().scaledToFill()
-                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.7), .black.opacity(0.5),
-                                                                                   .black.opacity(0.3),
-                                                                                   .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
-                                    )).padding(.top, -45.0)
-                                
-                                
-                            }
-                            
-                            
-                            VStack{
-                                
-                                NavigationLink(destination: addCity(),
-                                               label: {
-                                    Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 150,  alignment: .trailing).foregroundColor(Color.white)
-                                    
-                                    
-                                })
-                                
-                                
-                                VStack {
-                                    Text(cont.contry ?? "")
-                                        .multilineTextAlignment(.center).padding(.top, -40.0)
-                                    
-                                }
-                                .foregroundColor(Color.white)
-                                .bold()
-                                .font(.custom("", fixedSize: 50))
-                                .listRowBackground(Color.white)
-                                
-                                
-                                VStack
-                                {
-                                    
-                                    List{
-                                        
-                                        Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
-                                            .font(.body)
-                                            .fontWeight(.bold)
-                                            .foregroundColor(Color.white)){
-                                              
-                                                
-                                                
-                                                EmergancyOffline(Unified: cont.police, ploices: cont.police, emblances: cont.ambulance, firS: cont.fire)
-                                                //--------------------------------------- First list style
-                                            }.listRowBackground(Color.white)
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        Section(header: Text("\(vm.nationality) Foreign Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
-                                            
-                                            affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
-                                            
-                                            
-                                                .listRowBackground(Color.white)
-                                        }
-                                        
-                                    }
-                                        .scrollContentBackground(.hidden)
-                                        .opacity(0.8)
-                                        .foregroundColor(Color.black)
-                                        .font(.system(size: 19))
-                                }
-                                
-                                
-                            }
-                            //                        .onAppear(){
-                            ////                            let location = cont.contry ?? ""
-                            ////                            fetchImage(loca:location)
-                            //                        }
-                        }
+                        //firstMain().padding(.vertical, -45.0)
+                        secondMain().padding(.vertical, -45.0)
                         
+                        //                    ForEach(events){ cont in
+                        //
+                        //
+                        //                        ZStack (alignment: .leading){
+                        //
+                        //                            let item = emer2.filter { $0.Country == cont.contry ?? ""}
+                        //
+                        //                            ForEach(item) { emere  in
+                        //
+                        //
+                        //
+                        //                                emere.bannerImage2.resizable().scaledToFill()
+                        //                                    .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
+                        //                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.7), .black.opacity(0.5),
+                        //                                                                                   .black.opacity(0.3),
+                        //                                                                                   .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
+                        //                                    )).padding(.top, -45.0)
+                        //
+                        //
+                        //                            }
+                        //
+                        //
+                        //                            VStack{
+                        //
+                        //                                NavigationLink(destination: addCity(),
+                        //                                               label: {
+                        //                                    Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
+                        //                                        .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 150,  alignment: .trailing).foregroundColor(Color.white)
+                        //
+                        //
+                        //                                })
+                        //
+                        //
+                        //                                VStack {
+                        //                                    Text("\(cont.contry)" )
+                        //                                        .multilineTextAlignment(.center).padding(.top, -40.0)
+                        //
+                        //                                }
+                        //                                .foregroundColor(Color.white)
+                        //                                .bold()
+                        //                                .font(.custom("", fixedSize: 50))
+                        //                                .listRowBackground(Color.white)
+                        //
+                        //
+                        //                                VStack
+                        //                                {
+                        //
+                        //                                    List{
+                        //
+                        //                                        Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
+                        //                                            .font(.body)
+                        //                                            .fontWeight(.bold)
+                        //                                            .foregroundColor(Color.white)){
+                        //
+                        //
+                        //
+                        //                                                EmergancyOffline(Unified: cont.police, ploices: cont.police, emblances: cont.ambulance, firS: cont.fire)
+                        //                                                //--------------------------------------- First list style
+                        //                                            }.listRowBackground(Color.white)
+                        //
+                        //
+                        //
+                        //
+                        //
+                        //
+                        //
+                        //                                        Section(header: Text("\(vm.nationality) Foreign Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
+                        //
+                        //                                            affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
+                        //
+                        //
+                        //                                                .listRowBackground(Color.white)
+                        //                                        }
+                        //
+                        //                                    }
+                        //                                        .scrollContentBackground(.hidden)
+                        //                                        .opacity(0.8)
+                        //                                        .foregroundColor(Color.black)
+                        //                                        .font(.system(size: 19))
+                        //                                }
+                        //
+                        //
+                        //                            }
+                        //                            //                        .onAppear(){
+                        //                            ////                            let location = cont.contry ?? ""
+                        //                            ////                            fetchImage(loca:location)
+                        //                            //                        }
+                        //                        }
+                        //
+                        //
+                        //
+                        //                    }
                         
-                        
-                    }
-                    
                     
                     
                 }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all)
-                
+                }
             }.onAppear(){
                 fetchEvent()
                 fetchEvent2(National: vm.nationality)

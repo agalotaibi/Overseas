@@ -29,7 +29,7 @@ struct affairsOffline: View {
                 .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
             VStack(alignment: .leading) {
                 Text("Embassy")
-                Text(embassC ?? "")
+                Text(embassC )
                     .foregroundColor(Color.gray)
                     .font(.footnote)
             }
@@ -37,7 +37,7 @@ struct affairsOffline: View {
             Button(
                 action: {
                     let telephone = "tel://"
-                    let formattedString = telephone + (embassC ?? "") ?? ""
+                    let formattedString = telephone + (embassC ) 
                     guard let url = URL(string: formattedString) else { return }
                     UIApplication.shared.open(url)
                 },
@@ -60,7 +60,7 @@ struct affairsOffline: View {
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                     VStack (alignment: .leading){
                         Text("Citizen Affairs")
-                        Text(affairsC ?? "")
+                        Text(affairsC )
                             .foregroundColor(Color.gray)
                             .font(.footnote)
                     }
@@ -69,7 +69,7 @@ struct affairsOffline: View {
                     Button(
                         action: {
                             let telephone = "tel://"
-                            let formattedString = telephone + (affairsC ?? "" ) ?? ""
+                            let formattedString = telephone + (affairsC )
                             guard let url = URL(string: formattedString) else { return }
                             UIApplication.shared.open(url)
                         },

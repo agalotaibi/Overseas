@@ -11,11 +11,6 @@ import CoreData
 import CoreLocationUI
 import CoreLocation
 
-extension CLLocation {
-    func fetchCityAndCountry(completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
-        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first?.locality, $0?.first?.country, $1) }
-    }
-}
 
 struct Onbording: View {
     @EnvironmentObject var vm : ViewModel
@@ -23,12 +18,8 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["Saudi Arabia"]
+    var nationality = ["","Saudi Arabia"]
     @State private var selectedNationality = ""
-    
-   
-  
-
     @Binding var shouldshowonb : Bool
     
    
@@ -101,23 +92,23 @@ struct Onbording: View {
                             }
                         }.pickerStyle(WheelPickerStyle())
                        
-                         //Divider()
-                        //.frame(width: 200)
+                         Divider()
+                        .frame(width: 200)
                         
-                        /*this is the old yellow button for you selected .
+                        //this is the old yellow button for you selected .
                         Text("You selected: \(vm.nationality)").bold().padding()
-                        .background(Color("Yellow")).cornerRadius(40)
-                       */
+                        .background(Color("yellow")).cornerRadius(40)
+                       
                         
                         /*-------------
                          the correct You selected line
                          ------------*/
-                        /*
-                        HStack{
-                            Text("You selected:").bold()
-                            Text(" \(vm.nationality)")
-                        }
-                         */
+                        
+//                        HStack{
+//                            Text("You selected:").bold()
+//                            Text(" \(vm.nationality)")
+//                        }
+                         
                        
                     }
                   
@@ -146,30 +137,30 @@ struct Onbording: View {
                         .padding(.bottom)
                     
                     
-                    Text("Overseas will not track you, it will take your region from your device.")
-                        .font(.system(size: 24))
-                        .foregroundColor(Color("ourGray"))
-                        .frame(maxWidth: 300, alignment: .leading)
-                    /*Text("Please Allow ")
-                        .font(.system(size: 40))
-                        .frame(maxWidth: 300, alignment: .leading)
-                    
-                    Text("Access Location")
-                        .font(.system(size: 40))
-                        .fontWeight(.bold)
-                        .frame(maxWidth: 300, alignment: .leading)
-                        .padding(.bottom)
-                    
-                    Text("Allow the app to get your current locathion to provide you with the best user experince")
-                        .font(.system(size: 24))
-                        .foregroundColor(Color("ourGray"))
-                        .frame(maxWidth: 300, alignment: .leading)*/
+//                    Text("Overseas will not track you, it will take your region from your device.")
+//                        .font(.system(size: 24))
+//                        .foregroundColor(Color("ourGray"))
+//                        .frame(maxWidth: 300, alignment: .leading)
+//                    Text("Please Allow ")
+//                        .font(.system(size: 40))
+//                        .frame(maxWidth: 300, alignment: .leading)
+//
+//                    Text("Access Location")
+//                        .font(.system(size: 40))
+//                        .fontWeight(.bold)
+//                        .frame(maxWidth: 300, alignment: .leading)
+//                        .padding(.bottom)
+//
+//                    Text("Allow the app to get your current locathion to provide you with the best user experince")
+//                        .font(.system(size: 24))
+//                        .foregroundColor(Color("ourGray"))
+//                        .frame(maxWidth: 300, alignment: .leading)
                     
 //                    Spacer()
                         
                     
                     VStack{
-                        /*
+                        
                                             //------------------------------
                                            LocationButton(.shareCurrentLocation){
                                                 locationManager.requestLocation()
@@ -191,7 +182,7 @@ struct Onbording: View {
                                             .cornerRadius(30)
                                            .tint(Color("Yellow"))
                                            .foregroundColor(Color("darkBlue"))
-                                          */
+                                          
                         
                                           //  .padding()
                     
@@ -206,11 +197,11 @@ struct Onbording: View {
                         Image(systemName: "arrow.forward.circle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("Yellow"))
+                            .foregroundColor(Color("yellow"))
                             .frame(width: 50)
                            // .padding(.top)
                         
-                    })
+                    }).padding()
  
                 }
                   

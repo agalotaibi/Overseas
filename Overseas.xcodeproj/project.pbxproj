@@ -14,6 +14,7 @@
 		31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420EC9298A6E1400EFD4C2 /* Onbording.swift */; };
 		31420ECC298A6E2600EFD4C2 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECB298A6E2600EFD4C2 /* MainPage.swift */; };
 		31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31420ECD298A6E3800EFD4C2 /* addCity.swift */; };
+		3153CC3529C272E9003ADC6D /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3153CC3429C272E9003ADC6D /* EmptyState.swift */; };
 		316ABCAB29B4EA4500BC1BCC /* secondMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ABCAA29B4EA4500BC1BCC /* secondMain.swift */; };
 		316ABCAD29B4EE0800BC1BCC /* firstMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ABCAC29B4EE0800BC1BCC /* firstMain.swift */; };
 		31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B4AF7029A4ED3000526086 /* Saved.xcdatamodeld */; };
@@ -37,6 +38,8 @@
 		31420EC9298A6E1400EFD4C2 /* Onbording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onbording.swift; sourceTree = "<group>"; };
 		31420ECB298A6E2600EFD4C2 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		31420ECD298A6E3800EFD4C2 /* addCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCity.swift; sourceTree = "<group>"; };
+		3153CC3329C2713E003ADC6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3153CC3429C272E9003ADC6D /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		316ABCAA29B4EA4500BC1BCC /* secondMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondMain.swift; sourceTree = "<group>"; };
 		316ABCAC29B4EE0800BC1BCC /* firstMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstMain.swift; sourceTree = "<group>"; };
 		31B4AF7129A4ED3000526086 /* Saved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Saved.xcdatamodel; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		31420EB9298A6D6400EFD4C2 /* Overseas */ = {
 			isa = PBXGroup;
 			children = (
+				3153CC3329C2713E003ADC6D /* Info.plist */,
 				31420EBA298A6D6400EFD4C2 /* OverseasApp.swift */,
 				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
 				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
@@ -92,6 +96,7 @@
 				31EF3CC129B5096800DA487B /* EmergancyOffline.swift */,
 				31DE01C229B4D09400EDCDA9 /* allinitals.swift */,
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
+				3153CC3429C272E9003ADC6D /* EmptyState.swift */,
 				31D4A8E0298BEBF900130841 /* Nationality.swift */,
 				31D4A8E2298BEC0B00130841 /* Notification.swift */,
 				E9BE30C329A4E501008A2A93 /* ViewModel.swift */,
@@ -184,6 +189,7 @@
 				31B4AF7429A4ED9100526086 /* Persistence.swift in Sources */,
 				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
 				31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */,
+				3153CC3529C272E9003ADC6D /* EmptyState.swift in Sources */,
 				E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */,
 				316ABCAB29B4EA4500BC1BCC /* secondMain.swift in Sources */,
 				31420EBD298A6D6400EFD4C2 /* ContentView.swift in Sources */,
@@ -325,6 +331,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Overseas/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -365,6 +372,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Overseas/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

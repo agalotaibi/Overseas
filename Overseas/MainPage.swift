@@ -120,7 +120,7 @@ struct MainPage: View {
                         
                         
                         
-                    }
+                    }.padding(.vertical, -45.0)
                     
                     
                 }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all)

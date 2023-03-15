@@ -36,6 +36,7 @@ struct MainPage: View {
     @State private var vistedcont = ""
     let numberString = "111-222-3334" //change
     @AppStorage("onbording")  var shouldshowonb = true
+    @State var isEmpty = true
     
     
     
@@ -46,11 +47,11 @@ struct MainPage: View {
             
             NavigationView {
                 
-                if events.isEmpty{
-                    EmptyState()
-                }
+//                if isEmpty{
+//                    EmptyState()
+//                }
                 
-                else{
+               // else{
                     TabView{
                         
                         //                    VStack{
@@ -66,7 +67,7 @@ struct MainPage: View {
                         //
                         //                    }
                         
-                        //firstMain().padding(.vertical, -45.0)
+                        firstMain().padding(.vertical, -45.0)
                         secondMain().padding(.vertical, -45.0)
                         
                         //                    ForEach(events){ cont in
@@ -165,7 +166,7 @@ struct MainPage: View {
                     
                     
                 }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all)
-                }
+              //  }
             }.onAppear(){
                 fetchEvent()
                 fetchEvent2(National: vm.nationality)

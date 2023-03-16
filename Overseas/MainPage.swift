@@ -67,12 +67,12 @@ struct MainPage: View {
                                 NavigationLink(destination: addCity(),
                                                label: {
                                     Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
-                                        .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 270,  alignment: .trailing).foregroundColor(Color.white)
+                                        .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 350,  alignment: .trailing).foregroundColor(Color.white)
                                 })
                                 
                                 
                                 Text(cont.contry ?? "")
-                                    .multilineTextAlignment(.center).padding(.top, -100.0).foregroundColor(Color.white)
+                                    .multilineTextAlignment(.center).padding(.top, -130).foregroundColor(Color.white)
                                     .bold()
                                     .font(.custom("", fixedSize: 50))
                                     .listRowBackground(Color.white)
@@ -111,7 +111,7 @@ struct MainPage: View {
                                 .scrollContentBackground(.hidden)
                                 .opacity(0.7)
                                 .foregroundColor(Color.black)
-                                .font(.system(size: 19))
+                                .font(.system(size: 19)).padding(.top, -90)
                                 
                                 
                                 

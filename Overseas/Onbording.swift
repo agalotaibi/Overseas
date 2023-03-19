@@ -18,8 +18,8 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["","Saudi Arabia"]
-    @State private var selectedNationality = ""
+    var nationality = ["Saudi Arabia"]
+    @State private var selectedNationality = "Saudi Arabia"
     @Binding var shouldshowonb : Bool
     
    
@@ -53,7 +53,6 @@ struct Onbording: View {
                     
                     Text("Overseas assist you in reaching authorities and emergency services, everywhere")
                         .font(.system(size: 24))
-                        .foregroundColor(Color("ourGray"))
                         .frame(maxWidth: 300, alignment: .leading)
                     // Spacer()
                 } .tag(1)
@@ -63,11 +62,10 @@ struct Onbording: View {
                 
                 VStack (){
                    Spacer()
-                    Spacer()
                     Image(systemName: "person.text.rectangle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color("darkBlue"))
+                        .foregroundColor(Color("yellow"))
                         .frame(width: 200)
                         .padding()
                     
@@ -92,12 +90,11 @@ struct Onbording: View {
                             }
                         }.pickerStyle(WheelPickerStyle())
                        
-                         Divider()
-                        .frame(width: 200)
+                        .frame(width: 200, height: 150)
                         
                         //this is the old yellow button for you selected .
-                        Text("You selected: \(vm.nationality)").bold().padding()
-                        .background(Color("yellow")).cornerRadius(40)
+//                        Text("You selected: \(vm.nationality)").bold().padding()
+//                        .background(Color("yellow")).cornerRadius(40)
                        
                         
                         /*-------------
@@ -108,6 +105,23 @@ struct Onbording: View {
 //                            Text("You selected:").bold()
 //                            Text(" \(vm.nationality)")
 //                        }
+                        
+                        Button(action: {
+                            
+                        shouldshowonb.toggle()
+                        
+                        
+                           
+                        },label:{
+                            
+                            Image(systemName: "arrow.forward.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(Color("yellow"))
+                                .frame(width: 50)
+                               // .padding(.top)
+                            
+                        }).padding()
                          
                        
                     }
@@ -118,96 +132,7 @@ struct Onbording: View {
                 
                 //------------- 3 onbording page ------------
                 
-                VStack(){
-                    
-                    Image(systemName:"mappin.and.ellipse")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color("darkBlue"))
-                        .frame(width: 150)
-                        .padding().padding(.bottom)
-                    
-                    Text("No Location")
-                        .font(.system(size: 40))
-                        .frame(maxWidth: 300, alignment: .leading)
-                        .fontWeight(.bold)
-                    Text("Tracking")
-                        .font(.system(size: 40))
-                        .frame(maxWidth: 300, alignment: .leading)
-                        .padding(.bottom)
-                    
-                    
-//                    Text("Overseas will not track you, it will take your region from your device.")
-//                        .font(.system(size: 24))
-//                        .foregroundColor(Color("ourGray"))
-//                        .frame(maxWidth: 300, alignment: .leading)
-//                    Text("Please Allow ")
-//                        .font(.system(size: 40))
-//                        .frame(maxWidth: 300, alignment: .leading)
-//
-//                    Text("Access Location")
-//                        .font(.system(size: 40))
-//                        .fontWeight(.bold)
-//                        .frame(maxWidth: 300, alignment: .leading)
-//                        .padding(.bottom)
-//
-//                    Text("Allow the app to get your current locathion to provide you with the best user experince")
-//                        .font(.system(size: 24))
-//                        .foregroundColor(Color("ourGray"))
-//                        .frame(maxWidth: 300, alignment: .leading)
-                    
-//                    Spacer()
-                        
-                    
-                    VStack{
-                        
-                                            //------------------------------
-                                           LocationButton(.shareCurrentLocation){
-                                                locationManager.requestLocation()
-                                                if let location = locationManager.location {
-                                                    print("longitude: ",location.longitude)
-                                                    print("latitude: ",location.latitude)
-                                                    //------------------------------
-                                                    let location = CLLocation(latitude:location.latitude, longitude: location.longitude)
-                                                    location.fetchCityAndCountry { city, country, error in
-                                                        guard let city = city, let country = country, error == nil else { return }
-                                                        Cityname = city
-                                                        Countryname = country
-                                                     print(Cityname)
-                                                    }
-                                                } else {
-                                                    print("INVALED!!!!!!!")
-                                                }
-                                            }//------------------------------
-                                            .cornerRadius(30)
-                                           .tint(Color("Yellow"))
-                                           .foregroundColor(Color("darkBlue"))
-                                          
-                        
-                                          //  .padding()
-                    
-                    Button(action: {
-                        
-                    shouldshowonb.toggle()
-                    
-                    
-                       
-                    },label:{
-                        
-                        Image(systemName: "arrow.forward.circle")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("yellow"))
-                            .frame(width: 50)
-                           // .padding(.top)
-                        
-                    }).padding()
- 
-                }
-                  
-                   .padding()
-                    
-                } .tag(3)
+               
                 
                 
                 
@@ -233,7 +158,7 @@ func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ cit
 
 struct Onbording_Previews: PreviewProvider {
     static var previews: some View {
-        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel())        // , shouldshowonb: .constant(true)
+        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel()).colorScheme(.dark)        // , shouldshowonb: .constant(true)
     }
 }
 

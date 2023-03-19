@@ -19,6 +19,8 @@
 		316ABCAD29B4EE0800BC1BCC /* firstMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ABCAC29B4EE0800BC1BCC /* firstMain.swift */; };
 		31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B4AF7029A4ED3000526086 /* Saved.xcdatamodeld */; };
 		31B4AF7429A4ED9100526086 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B4AF7329A4ED9100526086 /* Persistence.swift */; };
+		31C0C81C29C77BB800522125 /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C0C81B29C77BB800522125 /* progressBar.swift */; };
+		31C0C81E29C79CFF00522125 /* location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C0C81D29C79CFF00522125 /* location.swift */; };
 		31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E0298BEBF900130841 /* Nationality.swift */; };
 		31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4A8E2298BEC0B00130841 /* Notification.swift */; };
 		31DE01C329B4D09400EDCDA9 /* allinitals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DE01C229B4D09400EDCDA9 /* allinitals.swift */; };
@@ -44,6 +46,8 @@
 		316ABCAC29B4EE0800BC1BCC /* firstMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstMain.swift; sourceTree = "<group>"; };
 		31B4AF7129A4ED3000526086 /* Saved.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Saved.xcdatamodel; sourceTree = "<group>"; };
 		31B4AF7329A4ED9100526086 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		31C0C81B29C77BB800522125 /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
+		31C0C81D29C79CFF00522125 /* location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = location.swift; sourceTree = "<group>"; };
 		31D4A8E0298BEBF900130841 /* Nationality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nationality.swift; sourceTree = "<group>"; };
 		31D4A8E2298BEC0B00130841 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		31DE01C229B4D09400EDCDA9 /* allinitals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allinitals.swift; sourceTree = "<group>"; };
@@ -90,10 +94,12 @@
 				31420EBA298A6D6400EFD4C2 /* OverseasApp.swift */,
 				31420EC9298A6E1400EFD4C2 /* Onbording.swift */,
 				31420ECB298A6E2600EFD4C2 /* MainPage.swift */,
+				31C0C81B29C77BB800522125 /* progressBar.swift */,
 				316ABCAC29B4EE0800BC1BCC /* firstMain.swift */,
 				316ABCAA29B4EA4500BC1BCC /* secondMain.swift */,
 				31EF3CC329B50A0000DA487B /* affairsOffline.swift */,
 				31EF3CC129B5096800DA487B /* EmergancyOffline.swift */,
+				31C0C81D29C79CFF00522125 /* location.swift */,
 				31DE01C229B4D09400EDCDA9 /* allinitals.swift */,
 				31420ECD298A6E3800EFD4C2 /* addCity.swift */,
 				3153CC3429C272E9003ADC6D /* EmptyState.swift */,
@@ -188,6 +194,7 @@
 			files = (
 				31B4AF7429A4ED9100526086 /* Persistence.swift in Sources */,
 				31420ECA298A6E1400EFD4C2 /* Onbording.swift in Sources */,
+				31C0C81C29C77BB800522125 /* progressBar.swift in Sources */,
 				31B4AF7229A4ED3000526086 /* Saved.xcdatamodeld in Sources */,
 				3153CC3529C272E9003ADC6D /* EmptyState.swift in Sources */,
 				E9BE30C429A4E501008A2A93 /* ViewModel.swift in Sources */,
@@ -198,6 +205,7 @@
 				31D4A8E3298BEC0B00130841 /* Notification.swift in Sources */,
 				31EF3CC229B5096800DA487B /* EmergancyOffline.swift in Sources */,
 				719B91EB299919C800A09E8B /* LocationManager.swift in Sources */,
+				31C0C81E29C79CFF00522125 /* location.swift in Sources */,
 				31DE01C329B4D09400EDCDA9 /* allinitals.swift in Sources */,
 				31420ECE298A6E3800EFD4C2 /* addCity.swift in Sources */,
 				31D4A8E1298BEBF900130841 /* Nationality.swift in Sources */,
@@ -325,7 +333,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Overseas/Overseas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Overseas/Preview Content\"";
 				DEVELOPMENT_TEAM = MB5NQ72WT3;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -366,7 +374,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Overseas/Overseas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Overseas/Preview Content\"";
 				DEVELOPMENT_TEAM = MB5NQ72WT3;
 				ENABLE_HARDENED_RUNTIME = YES;

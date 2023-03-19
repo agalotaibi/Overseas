@@ -28,10 +28,11 @@ struct firstMain: View {
                     
                     emere.bannerImage.resizable().scaledToFill()
                         .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                            LinearGradient(gradient: Gradient(colors: [.black.opacity(0.7), .black.opacity(0.5),
-                                                                       .black.opacity(0.3),
-                                                                       .black.opacity(0.3),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
-                        )).ignoresSafeArea(.all)
+                            LinearGradient(gradient: Gradient(colors: [.black.opacity(0.4), .black.opacity(0.3),
+                                                                       .black.opacity(0.2),
+                                                                       .black.opacity(0.6),.black.opacity(1)]), startPoint: .top, endPoint: .bottom)
+                        ))
+                        //.ignoresSafeArea(.all)
                     
                 }
                 

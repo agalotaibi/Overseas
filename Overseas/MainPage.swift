@@ -56,10 +56,10 @@ struct MainPage: View {
                                 
                                 emere.bannerImage2.resizable().scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.6), .black.opacity(0.2),
+                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.4), .black.opacity(0.2),
                                                                                    .black.opacity(0.2),
-                                                                                   .black.opacity(0.1),.black.opacity(0.0)]), startPoint: .top, endPoint: .bottom)
-                                    )).ignoresSafeArea(.all)
+                                                                                   .black.opacity(0.7),.black.opacity(1)]), startPoint: .top, endPoint: .bottom)
+                                    ))
                                 
                             }
                             
@@ -70,12 +70,14 @@ struct MainPage: View {
                                         .frame(width: 35, height: 35).frame(maxWidth: 330, maxHeight: 350,  alignment: .trailing).foregroundColor(Color.white)
                                 })
                                 
+                                Spacer()
+                                
+                                VStack{
                                 
                                 Text(cont.contry ?? "")
-                                    .multilineTextAlignment(.center).padding(.top, -130).foregroundColor(Color.white)
+                                    .padding(.top, -150).foregroundColor(Color.white)
                                     .bold()
                                     .font(.custom("", fixedSize: 50))
-                                    .listRowBackground(Color.white)
                                 
                                 
                                 
@@ -86,7 +88,7 @@ struct MainPage: View {
                                         .font(.body)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.white)){
-                                          
+                                            
                                             
                                             
                                             EmergancyOffline(Unified: Int64(cont.police), ploices: Int64(cont.police), emblances: Int64(cont.ambulance), firS: Int64(cont.fire))
@@ -105,15 +107,15 @@ struct MainPage: View {
                                         
                                             .listRowBackground(Color.white)
                                     }
-
+                                    
                                     
                                 }
                                 .scrollContentBackground(.hidden)
                                 .opacity(0.7)
                                 .foregroundColor(Color.black)
-                                .font(.system(size: 19)).padding(.top, -90)
+                                .font(.system(size: 19)).padding(.top, -50)
                                 
-                                
+                            }
                                 
                             }.padding(.top, -50.0)
                         }
@@ -123,7 +125,7 @@ struct MainPage: View {
                     }.padding(.vertical, -45.0)
                     
                     
-                }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all)
+                }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all).padding(.bottom)
                 
             }.onAppear(){
                 fetchEvent()
@@ -131,9 +133,9 @@ struct MainPage: View {
                 fetchImage()
             }
             
-        }.fullScreenCover(isPresented: $shouldshowonb ){
+        }.colorScheme(.dark).fullScreenCover(isPresented: $shouldshowonb ){
             Onbording(shouldshowonb: $shouldshowonb)
-        }.preferredColorScheme(.dark)//.edgesIgnoringSafeArea(.all)
+        }//.edgesIgnoringSafeArea(.all)
         
     }
     

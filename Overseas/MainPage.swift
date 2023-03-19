@@ -56,9 +56,9 @@ struct MainPage: View {
                                 
                                 emere.bannerImage2.resizable().scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity).padding(.top, -50).overlay( Rectangle().fill(
-                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.4), .black.opacity(0.2),
+                                        LinearGradient(gradient: Gradient(colors: [.black.opacity(0.5), .black.opacity(0.2),
                                                                                    .black.opacity(0.2),
-                                                                                   .black.opacity(0.7),.black.opacity(1)]), startPoint: .top, endPoint: .bottom)
+                                                                                   .black.opacity(0.1),                .black.opacity(0.2),        .black.opacity(0.8),.black.opacity(1)]), startPoint: .top, endPoint: .bottom)
                                     ))
                                 
                             }

@@ -18,8 +18,8 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["Saudi Arabia"]
-    @State private var selectedNationality = "Saudi Arabia"
+    var nationality = ["","Saudi Arabia"]
+    @State private var selectedNationality = ""
     @Binding var shouldshowonb : Bool
     
    
@@ -84,7 +84,8 @@ struct Onbording: View {
                     //Spacer()
                     VStack {
                     
-                        Picker("Please choose a color", selection: $vm.nationality) {
+                        Picker("Please choose a color", selection:
+                            $vm.nationality) {
                             ForEach(nationality, id: \.self) {
                                 Text($0)
                             }

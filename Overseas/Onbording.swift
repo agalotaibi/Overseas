@@ -34,7 +34,7 @@ struct Onbording: View {
                 
                 VStack(){
                     
-                    Image("onbording1")
+                    Image("onB1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 250)
@@ -49,7 +49,7 @@ struct Onbording: View {
                         .font(.system(size: 48))
                         .fontWeight(.bold)
                         .frame(maxWidth: 300, alignment: .leading)
-                        .padding(.bottom)
+                        .padding(.bottom).foregroundColor(Color("yellow"))
                     
                     Text("Overseas assist you in reaching authorities and emergency services, everywhere")
                         .font(.system(size: 24))

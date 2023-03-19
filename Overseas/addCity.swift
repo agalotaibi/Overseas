@@ -34,7 +34,7 @@ struct addCity: View {
     private var events: FetchedResults<SavedCountry>
     @State var emb :[Emb] = []
     @State var emer2 :[Numb2] = []
-    
+    @State private var isLoading = false
     
     
     
@@ -73,7 +73,7 @@ struct addCity: View {
                                     
                                     let item = emer2.filter { $0.Country == cont.contry ?? ""}
                                     
-                                 
+                                    
                                     
                                     ForEach(item) { emere  in
                                         
@@ -174,8 +174,16 @@ struct addCity: View {
                 //                    }//toolbar
                 //.searchable(text: $searchText)
             }.searchable(text: $searchText) {
+                
+                if isLoading{
+                    progressBar()
+                }
                 ForEach(array) { emergency in
                     //Text(emergency.Country).searchCompletion(emergency)
+                    if emergency.Country.isEmpty{
+                        progressBar()
+                    }
+                
                     HStack{
                         Text(emergency.Country).searchCompletion(emergency)
                         Spacer()
@@ -227,7 +235,9 @@ struct addCity: View {
                 fetchImage()
                 
             }
-        }//.sheet(isPresented: $showingNatio) {
+        
+        }
+        //.sheet(isPresented: $showingNatio) {
         //   Nationality()
         //            }.sheet(isPresented: $showingNotifi) {
         //                Notification()
@@ -241,6 +251,7 @@ struct addCity: View {
         }
     }
     func fetchEvent(){
+        isLoading = true
         em.removeAll()
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType:"Emergency", predicate: predicate)
@@ -256,6 +267,8 @@ struct addCity: View {
         }
         
         CKContainer.default().publicCloudDatabase.add(operation)
+        
+        isLoading = false
         
     }
     

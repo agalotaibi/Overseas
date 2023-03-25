@@ -19,6 +19,7 @@ struct firstMain: View {
     @State var National = ""
     @State var emer :[Numb] = []
     @State var emb :[Emb] = []
+    @State private var isLoading = false
     
     var body: some View {
         
@@ -184,7 +185,7 @@ struct firstMain: View {
                                 ForEach(emb) { embe  in
                                     let emb2 = embe.Embasy_n.split(separator: "/")
                                     
-                                    Section(header: Text("\(vm.nationality) Foreign Affairs")
+                                    Section(header: Text("\(vm.nationality) Citizen Affairs")
                                         .font(.body)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.white).opacity(1.0)){
@@ -309,6 +310,11 @@ struct firstMain: View {
                 }
                 
                 
+                
+            }
+            
+            if isLoading{
+                NoInternet()
             }
             
         }.onAppear(){
@@ -330,6 +336,8 @@ struct firstMain: View {
     }
     
     func fetchEvent(){
+        
+        
         
         emer.removeAll()
         
@@ -354,6 +362,8 @@ struct firstMain: View {
         }
         
         CKContainer.default().publicCloudDatabase.add(operation)
+        
+     
         
     }
     

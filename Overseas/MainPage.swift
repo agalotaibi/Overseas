@@ -37,6 +37,7 @@ struct MainPage: View {
     let numberString = "111-222-3334" //change
     @AppStorage("onbording")  var shouldshowonb = true
     @State var isEmpty = true
+    @State private var isLoading = false
     
     
     
@@ -45,9 +46,14 @@ struct MainPage: View {
         
         VStack{
             
+            
+            
             NavigationView {
                 
+                
+                
                 TabView{
+
                     firstMain().padding(.vertical, -45.0)
                     ForEach(events){ cont in
                         ZStack (alignment: .leading){
@@ -100,7 +106,7 @@ struct MainPage: View {
                                     
                                     
                                     
-                                    Section(header: Text("\(vm.nationality) Foreign Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
+                                    Section(header: Text("\(vm.nationality) Citizen Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
                                         
                                         affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
                                         
@@ -127,6 +133,8 @@ struct MainPage: View {
                     
                 }.tabViewStyle(PageTabViewStyle()).indexViewStyle(.page(backgroundDisplayMode: .always)).edgesIgnoringSafeArea(.all).padding(.bottom)
                 
+                
+                
             }.onAppear(){
                 fetchEvent()
                 fetchEvent2(National: vm.nationality)
@@ -135,7 +143,7 @@ struct MainPage: View {
             
         }.colorScheme(.dark).fullScreenCover(isPresented: $shouldshowonb ){
             Onbording(shouldshowonb: $shouldshowonb)
-        }//.edgesIgnoringSafeArea(.all)
+        }.colorScheme(.dark)
         
     }
     
@@ -153,6 +161,7 @@ struct MainPage: View {
     }
     
     func fetchEvent(){
+        isLoading = true
         
         emer.removeAll()
         
@@ -177,6 +186,8 @@ struct MainPage: View {
         }
         
         CKContainer.default().publicCloudDatabase.add(operation)
+        
+        isLoading = false
         
     }
     
@@ -211,7 +222,7 @@ struct MainPage: View {
     //
     
     func fetchEvent2(National: String){
-        
+        isLoading = true
         
         emb.removeAll()
         
@@ -236,7 +247,7 @@ struct MainPage: View {
         CKContainer.default().publicCloudDatabase.add(operation)
         
         
-        
+        isLoading = false
     }
 }
 

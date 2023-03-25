@@ -18,8 +18,8 @@ struct Onbording: View {
     @StateObject var locationManager = LocationManager()
     @State private var Cityname = ""
     @State private var Countryname = ""
-    var nationality = ["","Saudi Arabia"]
-    @State private var selectedNationality = ""
+    var nationality = ["Saudi Arabia"]
+    @State private var selectedNationality = "Saudi Arabia"
     @Binding var shouldshowonb : Bool
     
    
@@ -143,7 +143,7 @@ struct Onbording: View {
                 print(vm.nationality,"😀")
             }
             
-        }
+        }.colorScheme(.dark)
     }
     
     
@@ -159,7 +159,7 @@ func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ cit
 
 struct Onbording_Previews: PreviewProvider {
     static var previews: some View {
-        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel()).colorScheme(.dark)        // , shouldshowonb: .constant(true)
+        Onbording(shouldshowonb: .constant(true)).environmentObject(ViewModel())        // , shouldshowonb: .constant(true)
     }
 }
 

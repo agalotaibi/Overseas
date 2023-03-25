@@ -41,6 +41,9 @@ struct addCity: View {
     var body: some View {
         
         VStack() {
+            if isLoading{
+                progressBar()
+            }
             
             NavigationStack {
                 VStack{
@@ -175,58 +178,58 @@ struct addCity: View {
                 //.searchable(text: $searchText)
             }.searchable(text: $searchText) {
                 
-                if isLoading{
-                    progressBar()
-                }
-                ForEach(array) { emergency in
-                    //Text(emergency.Country).searchCompletion(emergency)
-                    if emergency.Country.isEmpty{
+               
+                    if isLoading{
                         progressBar()
                     }
-                
-                    HStack{
-                        Text(emergency.Country).searchCompletion(emergency)
-                        Spacer()
-                        
-                        
-                        Button {
+                ForEach(array) { emergency in
+                    //Text(emergency.Country).searchCompletion(emergency)
+                    
+                    
+                        HStack{
+                            Text(emergency.Country).searchCompletion(emergency)
+                            Spacer()
                             
                             
-                            //   let cont = SavedCountry(context: viewContext)
-                            var con = emergency.Country
-                            var amb = emergency.Ambulance
-                            var fire = emergency.Fire
-                            var pol = emergency.Police
-                            locaiton = emergency.Country
+                            Button {
+                                
+                                
+                                //   let cont = SavedCountry(context: viewContext)
+                                var con = emergency.Country
+                                var amb = emergency.Ambulance
+                                var fire = emergency.Fire
+                                var pol = emergency.Police
+                                locaiton = emergency.Country
+                                
+                                
+                                
+                                fetchEvent2(National: vm.nationality, loca: locaiton,Fire: Int16(fire), Ambulance: Int16(amb),police: Int16(pol))
+                                //                            for embss in emb{
+                                //
+                                //                                let vis = SavedCountry(context: viewContext)
+                                //                                vis.embassy = embss.Embasy_n
+                                //                                vis.qunsl = embss.Consulate_no
+                                //
+                                //                            }
+                                
+                                
+                                
+                                //fetchSpecific()
+                                
+                                
+                                
+                                
+                                
+                                
+                            } label: {
+                                Text("Add")
+                                    .foregroundColor(Color.blue)
+                            }
                             
-                            
-                            
-                            fetchEvent2(National: vm.nationality, loca: locaiton,Fire: Int16(fire), Ambulance: Int16(amb),police: Int16(pol))
-                            //                            for embss in emb{
-                            //
-                            //                                let vis = SavedCountry(context: viewContext)
-                            //                                vis.embassy = embss.Embasy_n
-                            //                                vis.qunsl = embss.Consulate_no
-                            //
-                            //                            }
-                            
-                            
-                            
-                            //fetchSpecific()
-                            
-                            
-                            
-                            
-                            
-                            
-                        } label: {
-                            Text("Add")
-                                .foregroundColor(Color.blue)
                         }
-                        
+                        .padding(.horizontal).frame(maxWidth: 390)
                     }
-                    .padding(.horizontal).frame(maxWidth: 390)
-                }
+                
                 // NavigationStack
                 
                 

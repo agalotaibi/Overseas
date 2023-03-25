@@ -11,5 +11,5 @@ import Foundation
 
 
 final class ViewModel: ObservableObject{
-    @AppStorage("nationality") var nationality = ""
+    @AppStorage("nationality") var nationality = "Saudi Arabia"
 }

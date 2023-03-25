@@ -53,9 +53,28 @@ struct MainPage: View {
                 
                 
                 TabView{
+                    
+                    if events.isEmpty{
+                        VStack{
+                            NavigationLink{
+                                addCity()
+                            }label: {
+                                Image(systemName: "plus.circle").resizable().aspectRatio(contentMode: .fit)
+                                    .frame(width: 50, height: 50).foregroundColor(Color("yellow"))
+                            }.padding()
+                            
+                            
+                            Text("Welcome to Overseas")
+                                .font(.title)
+                                .fontWeight(.regular).foregroundColor(.gray).padding(.bottom, -4.0)
+                            Text("Click the + so you can add Visted Country")
+                                .font(.body).foregroundColor(.gray)
+                        }
+                    }
 
-                    firstMain().padding(.vertical, -45.0)
+                    //firstMain().padding(.vertical, -45.0)
                     ForEach(events){ cont in
+                        
                         ZStack (alignment: .leading){
                             let item = emer2.filter { $0.Country == cont.contry ?? ""}
                             ForEach(item) { emere  in
@@ -161,7 +180,7 @@ struct MainPage: View {
     }
     
     func fetchEvent(){
-        isLoading = true
+     
         
         emer.removeAll()
         
@@ -187,7 +206,7 @@ struct MainPage: View {
         
         CKContainer.default().publicCloudDatabase.add(operation)
         
-        isLoading = false
+      
         
     }
     
@@ -222,7 +241,7 @@ struct MainPage: View {
     //
     
     func fetchEvent2(National: String){
-        isLoading = true
+   
         
         emb.removeAll()
         
@@ -247,7 +266,7 @@ struct MainPage: View {
         CKContainer.default().publicCloudDatabase.add(operation)
         
         
-        isLoading = false
+     
     }
 }
 

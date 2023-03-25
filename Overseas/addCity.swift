@@ -41,9 +41,7 @@ struct addCity: View {
     var body: some View {
         
         VStack() {
-            if isLoading{
-                progressBar()
-            }
+          
             
             NavigationStack {
                 VStack{
@@ -180,7 +178,11 @@ struct addCity: View {
                 
                
                     if isLoading{
-                        progressBar()
+                        VStack{
+                            
+                            ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .yellow)).scaleEffect(3)
+                            
+                        }
                     }
                 ForEach(array) { emergency in
                     //Text(emergency.Country).searchCompletion(emergency)

@@ -313,10 +313,7 @@ struct firstMain: View {
                 
             }
             
-            if isLoading{
-                NoInternet()
-            }
-            
+          
         }.onAppear(){
             fetchEvent()
             fetchEvent2(National: vm.nationality)

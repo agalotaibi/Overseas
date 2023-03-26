@@ -41,8 +41,9 @@ struct addCity: View {
     var body: some View {
         
         VStack() {
-          
             
+            ZStack{
+
             NavigationStack {
                 VStack{
                     if events.isEmpty {
@@ -174,20 +175,33 @@ struct addCity: View {
                 //                        }//ToolbarItemGroup
                 //                    }//toolbar
                 //.searchable(text: $searchText)
+                
+                
             }.searchable(text: $searchText) {
                 
-               
-                    if isLoading{
+                if array.isEmpty{
+                    
+                    
+                    ZStack{
+                        Color(.black).ignoresSafeArea()
+                       
                         VStack{
+                            
+                            Spacer()
                             
                             ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .yellow)).scaleEffect(3)
                             
+                            Spacer()
                         }
                     }
+                    
+                }
+               
+                
                 ForEach(array) { emergency in
                     //Text(emergency.Country).searchCompletion(emergency)
                     
-                    
+                    ZStack{
                         HStack{
                             Text(emergency.Country).searchCompletion(emergency)
                             Spacer()
@@ -228,19 +242,32 @@ struct addCity: View {
                                     .foregroundColor(Color.blue)
                             }
                             
+                            
+                            
+                            
                         }
                         .padding(.horizontal).frame(maxWidth: 390)
+                      
+                        
                     }
+                    
+                    
+                }
                 
                 // NavigationStack
                 
                 
-            }.onAppear{
-                fetchEvent()
-                fetchImage()
-                
             }
-        
+                
+        }
+            
+            
+
+            
+        }.onAppear{
+            fetchEvent()
+            fetchImage()
+            
         }
         //.sheet(isPresented: $showingNatio) {
         //   Nationality()
@@ -256,8 +283,9 @@ struct addCity: View {
         }
     }
     func fetchEvent(){
-        isLoading = true
+        
         em.removeAll()
+        isLoading = true
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType:"Emergency", predicate: predicate)
         let operation = CKQueryOperation(query: query)

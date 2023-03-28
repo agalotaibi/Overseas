@@ -179,24 +179,6 @@ struct addCity: View {
                 
             }.searchable(text: $searchText) {
                 
-                if array.isEmpty{
-                    
-                    
-                    ZStack{
-                        Color(.black).ignoresSafeArea()
-                       
-                        VStack{
-                            
-                            Spacer()
-                            
-                            ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .yellow)).scaleEffect(3)
-                            
-                            Spacer()
-                        }
-                    }
-                    
-                }
-               
                 
                 ForEach(array) { emergency in
                     //Text(emergency.Country).searchCompletion(emergency)
@@ -255,7 +237,23 @@ struct addCity: View {
                 }
                 
                 // NavigationStack
-                
+                if array.isEmpty{
+                    
+                    
+                    ZStack{
+                        Color(.black).ignoresSafeArea()
+                       
+                        VStack{
+                            
+                            Spacer()
+                            
+                            ProgressView().progressViewStyle(CircularProgressViewStyle(tint: .yellow)).scaleEffect(2)
+                            
+                            Spacer()
+                        }
+                    }
+                    
+                }
                 
             }
                 

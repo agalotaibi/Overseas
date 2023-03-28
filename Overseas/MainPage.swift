@@ -67,7 +67,7 @@ struct MainPage: View {
                             Text("Welcome to Overseas")
                                 .font(.title)
                                 .fontWeight(.regular).foregroundColor(.gray).padding(.bottom, -4.0)
-                            Text("Click the + so you can add Visted Country")
+                            Text("Click the (+) button to add a Country")
                                 .font(.body).foregroundColor(.gray)
                         }
                     }

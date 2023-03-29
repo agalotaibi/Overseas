@@ -124,7 +124,7 @@ struct MainPage: View {
                                         
                                         
                                         
-                                        if ((cont.embassy?.isEmpty) != nil){
+                                        if cont.embassy!.isEmpty{
                                             
                                             
                                         }

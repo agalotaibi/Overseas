@@ -107,32 +107,36 @@ struct MainPage: View {
                                 
                                 
                                 
-                                List{
-                                    
-                                    Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
-                                        .font(.body)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color.white)){
-                                            
-                                            
-                                            
-                                            EmergancyOffline(Unified: Int64(cont.police), ploices: Int64(cont.police), emblances: Int64(cont.ambulance), firS: Int64(cont.fire))
-                                            //--------------------------------------- First list style
-                                        }.listRowBackground(Color.white)
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    Section(header: Text("\(vm.nationality) Citizen Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
+                                    List{
                                         
-                                        affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
+                                        Section(header: Text("\(cont.contry ?? "") Emergency Numbers")
+                                            .font(.body)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color.white)){
+                                                
+                                                
+                                                
+                                                EmergancyOffline(Unified: Int64(cont.police), ploices: Int64(cont.police), emblances: Int64(cont.ambulance), firS: Int64(cont.fire))
+                                                //--------------------------------------- First list style
+                                            }.listRowBackground(Color.white)
                                         
                                         
-                                            .listRowBackground(Color.white)
+                                        
+                                        
+                                        
+                                        if ((cont.embassy?.isEmpty) != nil){
+                                            
+                                            
+                                        }
+                                        else{
+                                            Section(header: Text("\(vm.nationality) Citizen Affairs").font(.body).fontWeight(.bold).foregroundColor(Color.white)){
+                                                
+                                                affairsOffline(embassC: cont.embassy ?? "", affairsC: cont.qunsl ?? "")
+                                                
+                                                
+                                                    .listRowBackground(Color.white)
+                                            }
                                     }
-                                    
                                     
                                 }
                                 .scrollContentBackground(.hidden)
